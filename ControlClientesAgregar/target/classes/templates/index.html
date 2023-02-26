@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Portal Inventario</title>
+        <meta charset="UTF-8">
+            <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+            <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+            <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+            <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+            <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+            <style>
+                body {
+                    background-image:
+                        url('https://www.gob.mx/cms/uploads/identity/image/32471/cabecera_blanca.jpg');
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: cover;
+                }
+
+                IMG.displayed {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto
+                }
+            </style>
+
+    </head>
+    <body>
+
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <a th:href="@{/agregar}" class="btn btn-dark">Subir base</a>
+        <div th:if="${personas != null and !personas.empty}">
+            <table class="table table-stryped">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>No Empleado</th>
+                        <th>RFC</th>
+                        <th>CURP</th>
+                        <th>Departamento</th>
+                        <th>Puesto</th>
+                        <th>Correo</th>
+                        <th>Marca CPU</th>
+                        <th>Modelo CPU</th>
+                        <th>Serie CPU</th>
+                        <th>Marca Monitor</th>
+                        <th>Modelo Monitor</th>
+                        <th>Serie Monitor</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="inventory : ${personas}">
+                        <td th:text="${inventory.nombre}">Mostrar Nombre</td>
+                        <td th:text="${inventory.numEmpleado}">Mostrar No Empleado</td>
+                        <td th:text="${inventory.rfcEmpleado}">Mostrar RFC</td>
+                        <td th:text="${inventory.curpEmpleado}">Mostrar CURP</td>
+                        <td th:text="${inventory.departamento}">Mostrar Departamento</td>
+                        <td th:text="${inventory.puesto}">Mostrar Puesto</td>
+                        <td th:text="${inventory.email}">Mostrar Correo</td>
+                        <td th:text="${inventory.marcaCpu}">Mostrar Marca CPU</td>
+                        <td th:text="${inventory.modeloCpu}">Mostrar Modelo CPU</td>
+                        <td th:text="${inventory.serieCpu}">Mostrar Serie CPU</td>
+                        <td th:text="${inventory.marcaMonitor}">Mostrar Marca Monitor</td>
+                        <td th:text="${inventory.modeloMonitor}">Mostrar Modelo Monitor</td>
+                        <td th:text="${inventory.serieMonitor}">Mostrar Serie Monitor</td>
+                        <td><a th:href="@{/editar/} + ${inventory.idInventario}" th:text="Editar"/></td>
+                        <td><a th:href="@{/eliminar(idInventario=${inventory.idInventario})}" th:text="Eliminar"/></td>                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${personas == null or personas.empty}">
+            La lista de Inventario está vacía
+        </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>
+

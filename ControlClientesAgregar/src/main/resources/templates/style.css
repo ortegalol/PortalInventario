@@ -1,0 +1,24 @@
+
+.col-md-6 {
+    margin: auto;
+    float: none;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.text-center {
+
+}
+#message {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 50px;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    border: none;
+}

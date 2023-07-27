@@ -10,19 +10,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "perifericos")
-public class Perifericos implements Serializable {
+@Table(name = "scanner")
+public class Scanner implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idper;
+    private Long idscanner;
 
-    private String scanner;
-    
-    private String proyector;
-    
-    private String camara;
-    
-    private String telefono;
+    private String seriescanner;
 
+    private String marcascanner;
+
+    private String modeloscanner;
+
+    private String tiposcanner;
+
+    private boolean status;
 }

@@ -100,7 +100,6 @@ public class ControladorInicio {
 //        model.addAttribute("pcs", pcs);
 //        return "alta_asignacion";
 //    }
-
     @GetMapping("/alta_asignacion")
     public String alta_asignacion(Model model) {
         List<Empleado> empleados = empleadoService.listarEmpleados();
@@ -238,13 +237,6 @@ public class ControladorInicio {
         return "redirect:/monitores";
     }
 
-    @PostMapping("/actualizarPerifericos/{idper}")
-    public String actualizarPerifericos(@PathVariable("idper") Long idper, @ModelAttribute Perifericos perifericos) {
-        perifericos.setIdper(idper);
-        perifericosService.actualizar(perifericos);
-        return "redirect:/perifericos";
-    }
-
     //  --------------------- Llenado Asignacion ---------------------  
     @GetMapping("/empleado/{numempleado}")
     @ResponseBody
@@ -267,16 +259,17 @@ public class ControladorInicio {
     //  --------------------- Asignacion Funcion ---------------------  
     @PostMapping("/asignarEmpleado")
     public String asignarEmpleado(@RequestParam("idempleado") Integer idEmpleado,
-            @RequestParam("idpc") Integer idPc) {
+            @RequestParam(value = "idpc", required = false) Integer idPc,
+            @RequestParam(value = "idmoni", required = false) Integer idMoni) {
 
         Asignacion asignacion = new Asignacion();
         asignacion.setIdempleado(idEmpleado);
         asignacion.setIdpc(idPc);
+        asignacion.setIdmoni(idMoni);
 
         asignacionService.guardar(asignacion);
 
         return "redirect:/";
-
     }
 
 }

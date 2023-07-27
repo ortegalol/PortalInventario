@@ -37,27 +37,4 @@ public class PerifericosServiceImpl implements PerifericosService {
         return perifericosDao.findById(id).orElse(null);
     }
 
-    @Override
-    public void actualizar(Perifericos perifericos) {
-        // Obtén el perifericos existente por su ID
-        Perifericos perifericosExistente = perifericosDao.findById(perifericos.getIdper()).orElse(null);
-
-        if (perifericosExistente != null) {
-            // Actualiza los campos necesarios del perifericos existente
-            perifericosExistente.setTeclado(perifericos.getTeclado());
-            perifericosExistente.setRaton(perifericos.getRaton());
-            perifericosExistente.setMultifuncional(perifericos.getMultifuncional());
-            perifericosExistente.setScanner(perifericos.getScanner());
-            perifericosExistente.setImpresora(perifericos.getImpresora());
-            perifericosExistente.setCenefas(perifericos.getCenefas());
-            perifericosExistente.setMiniprinter(perifericos.getMiniprinter());
-            perifericosExistente.setProyector(perifericos.getProyector());
-            perifericosExistente.setCamara(perifericos.getCamara());
-            perifericosExistente.setTelefono(perifericos.getTelefono());
-
-            // Guarda los cambios en el perifericos existente
-            perifericosDao.save(perifericosExistente);
-        }
-
-    }
 }

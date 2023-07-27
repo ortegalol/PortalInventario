@@ -10,19 +10,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "perifericos")
-public class Perifericos implements Serializable {
+@Table(name = "pinpad")
+public class Pinpad implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idper;
+    private Long idpinpad;
 
-    private String scanner;
-    
-    private String proyector;
-    
-    private String camara;
-    
-    private String telefono;
+    private String seriepinpad;
 
+    private String marcapinpad;
+
+    private String modelopinpad;
+    
+    private boolean status;
 }

@@ -108,10 +108,9 @@
                             <option th:each="monitor : ${monitores}" th:value="${monitor.serie}" th:text="${monitor.serie}"></option>
                         </select>
 
-                        <input type="hidden" name="idMoni" />
-
-                        <label for="serie">Serie Monitor:</label>
-                        <input type="text" class="form-control" name="serie" id="serie"/>
+                        
+                        <label for="idmoni">ID Monitor:</label>
+                        <input type="text" class="form-control" name="idmoni" id="idmoni"/>
 
                         <label for="marca">Marca Monitor:</label>
                         <input type="text" class="form-control" name="marca" id="marca"/>

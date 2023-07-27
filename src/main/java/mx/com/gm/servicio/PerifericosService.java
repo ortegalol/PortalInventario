@@ -13,6 +13,4 @@ public interface PerifericosService {
 
     public Perifericos obtenerPerifericosPorId(Long id);
     
-    public void actualizar(Perifericos perifericos);
-
 }

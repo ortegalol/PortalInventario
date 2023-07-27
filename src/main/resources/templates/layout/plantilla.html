@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>Plantilla</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+
+        <header th:fragment="header" >
+            <div class="bg-dark">
+                <nav class="navbar navbar-dark bg-dark navbar-expand">
+                    <div class="container-fluid d-flex justify-content-between">
+                        <img src="logo.png" alt="Logo" class="navbar-brand" style="height: 50px; width: auto;">
+                            <ul sec:authorize="isAuthenticated()" class="navbar-nav ms-auto">
+                                <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="/">Inicio</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-white" href="#" id="consultasDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultas</a>
+                                        <div class="dropdown-menu" aria-labelledby="consultasDropdown">
+                                            <a class="dropdown-item" href="/empleados">Empleados</a>
+                                            <a class="dropdown-item" href="/pcs">Pc</a>
+                                            <a class="dropdown-item" href="/monitores">Monitores</a>
+                                            <a class="dropdown-item" href="/perifericos">Perifericos</a>
+                                            <a class="dropdown-item" href="/asignaciones">Asignacion</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle text-white" href="#" id="operacionesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Operaciones</a>
+                                        <div class="dropdown-menu" aria-labelledby="operacionesDropdown">
+                                            <a class="dropdown-item" href="/altas">Altas</a>
+                                            <a class="dropdown-item" href="/alta_asignacion">Asignaciones</a>
+                                        </div>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="#">Formatos</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                                           aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-user"></i><span> Bienvenido:</span>
+                                            <span sec:authentication="name">Usuario</span></a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                                            <a class="dropdown-item" href="#" sec:authentication="name">My account</a>
+                                            <form method="POST" th:action="@{/logout}">
+                                                <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
+                                                    <i class="fas fa-user-times"></i> Salir
+                                                </a>
+                                            </form>
+                                        </div>
+                                    </li>           
+
+
+                                    <li class="nav-item">
+
+                                    </li>
+                                </ul>
+                            </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <footer th:fragment="footer" class="bg-dark text-white mt-1 p-1">
+            <div class="container">
+                <div class="col">
+                    <p class="lead text-center">
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

@@ -29,6 +29,7 @@
                             <th>Origen</th>
                             <th>Estado</th>
                             <th>Status</th>
+                            <th>Fecha Alta</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -45,6 +46,7 @@
                             <td th:text="${pc.origen}">Mostrar Origen</td>
                             <td th:text="${pc.estado}">Mostrar Estado</td>
                             <td th:text="${pc.status}">Mostrar Status</td>
+                            <td th:text="${pc.fechapc}">Mostrar Fecha Alta</td>
                             <td><a th:href="@{/editarpc/{idPc}(idPc=${pc.idpc})}" th:text="Editar"></a></td>
                             <td><a th:href="@{/eliminarpc(idpc=${pc.idpc})}" th:text="Eliminar"></a></td>
                         </tr>

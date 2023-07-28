@@ -9,12 +9,21 @@ import mx.com.gm.domain.Empleado;
 import mx.com.gm.domain.Monitor;
 import mx.com.gm.domain.Pc;
 import mx.com.gm.domain.Perifericos;
+import mx.com.gm.domain.Raton;
+import mx.com.gm.domain.Teclado;
+import mx.com.gm.domain.Ups;
 import mx.com.gm.servicio.AsignacionService;
 import mx.com.gm.servicio.AsignacioncomService;
 import mx.com.gm.servicio.EmpleadoService;
+import mx.com.gm.servicio.ImpresoraService;
 import mx.com.gm.servicio.MonitorService;
 import mx.com.gm.servicio.PcService;
-import mx.com.gm.servicio.PerifericosService;
+import mx.com.gm.servicio.PinpadService;
+import mx.com.gm.servicio.RatonService;
+import mx.com.gm.servicio.ScannerService;
+import mx.com.gm.servicio.TecladoService;
+import mx.com.gm.servicio.TelefonoService;
+import mx.com.gm.servicio.UpsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -39,11 +48,22 @@ public class ControladorInicio {
     @Autowired
     private MonitorService monitorService;
     @Autowired
-    private PerifericosService perifericosService;
+    private TecladoService tecladoService;
+    @Autowired
+    private RatonService ratonService;
+    @Autowired
+    private UpsService upsService;
+    @Autowired
+    private ImpresoraService impresoraService;
+    @Autowired
+    private ScannerService scannerService;
+    @Autowired
+    private TelefonoService telefonoService;
+    @Autowired
+    private PinpadService pinpadService;
 
     @Autowired
     private AsignacionService asignacionService;
-
     @Autowired
     private AsignacioncomService asignacioncomService;
 
@@ -75,19 +95,61 @@ public class ControladorInicio {
         return "monitores";
     }
 
-    @GetMapping("/perifericos")
-    public String perifericos(Model model, @AuthenticationPrincipal User user) {
-        var perifericos = perifericosService.listarPerifericos();
-        model.addAttribute("perifericos", perifericos);
-        return "perifericos";
-    }
-
     @GetMapping("/asignaciones")
     public String asignaciones(Model model, @AuthenticationPrincipal User user) {
         var asignacioncom = asignacioncomService.listarAsignaciones();
         model.addAttribute("asignaciones", asignacioncom);
         return "asignaciones";
     }
+
+    @GetMapping("/teclados")
+    public String teclados(Model model, @AuthenticationPrincipal User user) {
+        var teclado = tecladoService.listarTeclados();
+        model.addAttribute("teclados", teclado);
+        return "teclados";
+    }
+//
+//    @GetMapping("/ratones")
+//    public String ratones(Model model, @AuthenticationPrincipal User user) {
+//        var raton = ratonService.listarRatones();
+//        model.addAttribute("ratones", raton);
+//        return "ratones";
+//    }
+//    
+//    @GetMapping("/ups")
+//    public String ups(Model model, @AuthenticationPrincipal User user) {
+//        var ups = upsService.listarUps();
+//        model.addAttribute("ups", ups);
+//        return "ups";
+//    }
+//
+//    @GetMapping("/impresoras")
+//    public String impresoras(Model model, @AuthenticationPrincipal User user) {
+//        var impresora = impresoraService.listarImpresoras();
+//        model.addAttribute("impresoras", impresora);
+//        return "impresoras";
+//    }
+//
+//    @GetMapping("/scanneres")
+//    public String Scanneres(Model model, @AuthenticationPrincipal User user) {
+//        var scanner = scannerService.listarScanneres();
+//        model.addAttribute("scanneres", scanner);
+//        return "scanneres";
+//    }
+//
+//    @GetMapping("/telefonos")
+//    public String Telefonos(Model model, @AuthenticationPrincipal User user) {
+//        var telefono = telefonoService.listarTelefonos();
+//        model.addAttribute("telefonos", telefono);
+//        return "telefonos";
+//    }
+//
+//    @GetMapping("/pinpads")
+//    public String Pinpads(Model model, @AuthenticationPrincipal User user) {
+//        var pinpad = Service.listarPinpads();
+//        model.addAttribute("pinpads", pinpad);
+//        return "pinpads";
+//    }    
 
 //  --------------------- Formularios ---------------------
 //    @GetMapping("/alta_asignacion")
@@ -151,13 +213,43 @@ public class ControladorInicio {
         return "redirect:/pcs";
     }
 
-    @PostMapping("/guardarPerifericos")
-    public String guardarPerifericos(@ModelAttribute Perifericos perifericos) {
-        perifericosService.guardar(perifericos);
-        return "redirect:/perifericos";
+    @PostMapping("/guardarTeclado")
+    public String guardarTeclado(@ModelAttribute Teclado teclado) {
+        tecladoService.guardar(teclado);
+        return "redirect:/teclados";
     }
-//  --------------------- Eliminacion Tablas ---------------------    
 
+//    @PostMapping("/guardarRaton")
+//    public String guardarRaton(@ModelAttribute Raton raton) {
+//        ratonService.guardar(raton);
+//        return "redirect:/ratones";
+//    }
+//    @PostMapping("/guardarUps")
+//    public String guardarUps(@ModelAttribute Ups ups) {
+//        upsService.guardar(ups);
+//        return "redirect:/ups";
+//    }
+//    @PostMapping("/guardarImpresora")
+//    public String guardarImpresora(@ModelAttribute Impresora impresora) {
+//        impresoraService.guardar(impresora);
+//        return "redirect:/impresoras";
+//    }
+//    @PostMapping("/guardarScanner")
+//    public String guardarScanner(@ModelAttribute Scanner scanner) {
+//        scannerService.guardar(scanner);
+//        return "redirect:/scanneres";
+//    }
+//    @PostMapping("/guardarTelefono")
+//    public String guardarTelefono(@ModelAttribute Telefono telefono) {
+//        telefonoService.guardar(telefono);
+//        return "redirect:/telefonos";
+//    }
+//    @PostMapping("/guardarPinpad")
+//    public String guardarPinpad(@ModelAttribute Pinpad pinpad) {
+//        pinpadService.guardar(pinpad);
+//        return "redirect:/pinpads";
+//    }
+//  --------------------- Eliminacion Tablas ---------------------    
     @GetMapping("/eliminarempl")
     public String eliminarEmpleado(@RequestParam("idEmpleado") Long idEmpleado) {
         Empleado empleado = empleadoService.obtenerEmpleadoPorId(idEmpleado);
@@ -177,13 +269,6 @@ public class ControladorInicio {
         Monitor monitor = monitorService.obtenerMonitorPorId(idMoni);
         monitorService.eliminar(monitor);
         return "redirect:/monitores";
-    }
-
-    @GetMapping("/eliminarPeriferico")
-    public String eliminarPeriferico(@RequestParam("idper") Long idper) {
-        Perifericos perifericos = perifericosService.obtenerPerifericosPorId(idper);
-        perifericosService.eliminar(perifericos);
-        return "redirect:/perifericos";
     }
 
     //  --------------------- Edicion Tablas ---------------------  
@@ -206,13 +291,6 @@ public class ControladorInicio {
         Monitor monitor = monitorService.obtenerMonitorPorId(idMoni);
         model.addAttribute("monitor", monitor);
         return "editmonitor";
-    }
-
-    @GetMapping("/editarperifericos/{idPer}")
-    public String editarPerifericos(@PathVariable("idPer") Long idPer, Model model) {
-        Perifericos perifericos = perifericosService.obtenerPerifericosPorId(idPer);
-        model.addAttribute("perifericos", perifericos);
-        return "editperifericos";
     }
 
     //  --------------------- Edicion Funcion ---------------------  

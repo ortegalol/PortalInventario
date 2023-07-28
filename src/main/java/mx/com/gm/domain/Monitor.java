@@ -1,6 +1,7 @@
 package mx.com.gm.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,4 +29,6 @@ public class Monitor implements Serializable {
     private String estado;
 
     private boolean status;
+    
+    private Date fechamonitor;
 }

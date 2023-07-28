@@ -62,6 +62,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
             empleadoExistente.setDepartamento(empleado.getDepartamento());
             empleadoExistente.setPuesto(empleado.getPuesto());
             empleadoExistente.setEmail(empleado.getEmail());
+            empleadoExistente.setExt(empleado.getExt());
             
             // Guarda los cambios en el empleado existente
             empleadoDao.save(empleadoExistente);

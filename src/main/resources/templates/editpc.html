@@ -15,7 +15,7 @@
         <div class="container mt-5">
             <h1>Editar Empleado</h1>
             <form th:action="@{/actualizarPc/{idpc}(idpc=${pc.idpc})}" method="post" th:object="${pc}">
-                
+
                 <input type="hidden" name="idPc" th:value="${pc.idpc}" />
 
                 <label for="seriepc">Serie:</label>
@@ -41,6 +41,9 @@
 
                 <label for="origen">Origen:</label>
                 <input type="text" class="form-control" name="origen" th:field="*{origen}" />
+
+                <label for="estado">Estado:</label>
+                <input type="text" class="form-control" name="estado" th:field="*{estado}" />
 
                 <input type="submit" class="btn btn-dark" value="Guardar" />
             </form>

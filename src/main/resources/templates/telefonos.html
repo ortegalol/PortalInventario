@@ -15,15 +15,13 @@
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         <div class="table-container">
-            <div th:if="${monitores != null and !monitores.empty}">
+            <div th:if="${telefonos != null and !telefonos.empty}">
                 <table id="datatable_asing" class="table table-striped custom-table">
                     <thead>
                         <tr>
                             <th>Serie</th>
                             <th>Marca</th>
                             <th>Modelo</th>
-                            <th>Origen</th>
-                            <th>Estado</th>
                             <th>Status</th>
                             <th>Fecha Alta</th>
                             <th>Editar</th>
@@ -31,23 +29,21 @@
                         </tr>
                     </thead>
                     <tbody id="tableinv">
-                        <tr th:each="monitor : ${monitores}">
-                            <td th:text="${monitor.serie}">Mostrar Serie</td>
-                            <td th:text="${monitor.marca}">Mostrar Marca</td>
-                            <td th:text="${monitor.modelo}">Mostrar Modelo</td>
-                            <td th:text="${monitor.origen}">Mostrar Origen</td>
-                            <td th:text="${monitor.estado}">Mostrar Estado</td>
-                            <td th:text="${monitor.status}">Mostrar Status</td>
-                            <td th:text="${monitor.fechamonitor}">Mostrar Fecha Alta</td>
-                            <td><a th:href="@{/editarmonitor/{idmoni}(idmoni=${monitor.idmoni})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarmoni(idmoni=${monitor.idmoni})}" th:text="Eliminar"></a></td>
+                        <tr th:each="telefono : ${telefonos}">
+                            <td th:text="${telefono.serietelefono}">Mostrar Serie</td>
+                            <td th:text="${telefono.marcatelefono}">Mostrar Marca</td>
+                            <td th:text="${telefono.modelotelefono}">Mostrar Modelo</td>
+                            <td th:text="${telefono.status}">Mostrar Status</td>
+                            <td th:text="${telefono.fechatelefono}">Mostrar Fecha Alta</td>
+                            <td><a th:href="@{/editartelefono/{idtelefono}(idtelefono=${telefono.idtelefono})}" th:text="Editar"></a></td>
+                            <td><a th:href="@{/eliminartelefono(idtelefono=${telefono.idtelefono})}" th:text="Eliminar"></a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>   
         </div>
-        <div th:if="${monitores == null or monitores.empty}">
-            La lista de Asignacion está vacía
+        <div th:if="${telefonos == null or telefonos.empty}">
+            La lista de Telefonos está vacía
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>
         <!-- jQuery -->

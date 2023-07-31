@@ -1,6 +1,7 @@
 package mx.com.gm.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,4 +27,6 @@ public class Scanner implements Serializable {
     private String tiposcanner;
 
     private boolean status;
+    
+    private Date fechascanner;
 }

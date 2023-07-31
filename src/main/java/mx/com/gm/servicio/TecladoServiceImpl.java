@@ -47,7 +47,6 @@ public class TecladoServiceImpl implements TecladoService {
             tecladoExistente.setSerieteclado(teclado.getSerieteclado());
             tecladoExistente.setMarcateclado(teclado.getMarcateclado());
             tecladoExistente.setModeloteclado(teclado.getModeloteclado());
-            tecladoExistente.setMarcateclado(teclado.getMarcateclado());
             // Guarda los cambios en el monitor existente
             tecladoDao.save(tecladoExistente);
         }

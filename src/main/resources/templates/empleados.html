@@ -46,8 +46,8 @@
                             <td th:text="${emplead.ext}">Mostrar Extension</td>
                             <td th:text="${emplead.fechaempleado}">Mostrar Fecha Alta</td>
                             
-                            <td><a th:href="@{/editarempl/{idEmpleado}(idEmpleado=${emplead.idempleado})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarempl(idEmpleado=${emplead.idempleado})}" th:text="Eliminar"></a></td>
+                            <td><a th:href="@{/editarempl/{idempleado}(idempleado=${emplead.idempleado})}" th:text="Editar"></a></td>
+                            <td><a th:href="@{/eliminarempl(idempleado=${emplead.idempleado})}" th:text="Eliminar"></a></td>
                         </tr>
                     </tbody>
                 </table>

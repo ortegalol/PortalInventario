@@ -14,7 +14,7 @@
         <header th:replace="layout/plantilla :: header"></header>
         <div class="container mt-5">
             <h1>Editar Empleado</h1>
-            <form th:action="@{/actualizarPc/{idpc}(idpc=${pc.idpc})}" method="post" th:object="${pc}">
+            <form th:action="@{/actualizarpc/{idpc}(idpc=${pc.idpc})}" method="post" th:object="${pc}">
 
                 <input type="hidden" name="idPc" th:value="${pc.idpc}" />
 

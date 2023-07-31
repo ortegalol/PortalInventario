@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Editar PC</title>
+        <title>Editar Teclado</title>
         <meta charset="UTF-8"/>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
@@ -13,25 +13,19 @@
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         <div class="container mt-5">
-            <h1>Editar Empleado</h1>
-            <form th:action="@{/actualizarmonitor/{idmoni}(idmoni=${monitor.idmoni})}" method="post" th:object="${monitor}">
+            <h1>Editar Teclado</h1>
+            <form th:action="@{/actualizarteclado/{idteclado}(idteclado=${teclado.idteclado})}" method="post" th:object="${teclado}">
 
-                <input type="hidden" name="idmoni" th:value="${monitor.idmoni}" />
+                <input type="hidden" name="idteclado" th:value="${teclado.idteclado}" />
 
-                <label for="serie">Serie:</label>
-                <input type="text" class="form-control" name="serie" th:field="*{serie}"/>
+                <label for="serieteclado">Serie:</label>
+                <input type="text" class="form-control" name="serieteclado" th:field="*{serieteclado}"/>
 
-                <label for="marca">Marca:</label>
-                <input type="text" class="form-control" name="marca" th:field="*{marca}" />
+                <label for="marcateclado">Marca:</label>
+                <input type="text" class="form-control" name="marcateclado" th:field="*{marcateclado}" />
 
-                <label for="modelo">Modelo:</label>
-                <input type="text" class="form-control" name="modelo" th:field="*{modelo}" />
-
-                <label for="origen">Origen:</label>
-                <input type="text" class="form-control" name="origen" th:field="*{origen}" />
-
-                <label for="estado">Estado:</label>
-                <input type="text" class="form-control" name="estado" th:field="*{estado}" />
+                <label for="modeloteclado">Modelo:</label>
+                <input type="text" class="form-control" name="modeloteclado" th:field="*{modeloteclado}" />
 
                 <input type="submit" class="btn btn-dark" value="Guardar" />
             </form>

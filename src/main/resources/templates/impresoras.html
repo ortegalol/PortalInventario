@@ -15,45 +15,37 @@
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         <div class="table-container">
-            <div th:if="${perifericos != null and !perifericos.empty}">
+            <div th:if="${impresoras != null and !impresoras.empty}">
                 <table id="datatable_asing" class="table table-striped custom-table">
                     <thead>
                         <tr>
-                            <th>Teclado</th>
-                            <th>Raton</th>
-                            <th>Multifuncional</th>
-                            <th>Scanner</th>
-                            <th>Impresora</th>
-                            <th>Cenefas</th>
-                            <th>Miniprinter</th>
-                            <th>Proyector</th>
-                            <th>Camara</th>
-                            <th>Telefono</th>
+                            <th>Serie</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Tipo</th>
+                            <th>Status</th>
+                            <th>Fecha Alta</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody id="tableinv">
-                        <tr th:each="peri : ${perifericos}">
-                            <td th:text="${peri.teclado}">Mostrar teclado</td>
-                            <td th:text="${peri.raton}">Mostrar raton</td>
-                            <td th:text="${peri.multifuncional}">Mostrar multifuncional</td>
-                            <td th:text="${peri.scanner}">Mostrar scanner</td>
-                            <td th:text="${peri.impresora}">Mostrar impresora</td>
-                            <td th:text="${peri.cenefas}">Mostrar cenefas</td>
-                            <td th:text="${peri.miniprinter}">Mostrar miniprinter</td>
-                            <td th:text="${peri.proyector}">Mostrar proyector</td>
-                            <td th:text="${peri.camara}">Mostrar camara</td>
-                            <td th:text="${peri.telefono}">Mostrar telefono</td>
-                            <td><a th:href="@{/editarperifericos/{idPer}(idPer=${peri.idper})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarPeriferico(idper=${peri.idper})}" th:text="Eliminar"></a></td>
+                        <tr th:each="impresora : ${impresoras}">
+                            <td th:text="${impresora.serieimpresora}">Mostrar Serie</td>
+                            <td th:text="${impresora.marcaimpresora}">Mostrar Marca</td>
+                            <td th:text="${impresora.modeloimpresora}">Mostrar Modelo</td>
+                            <td th:text="${impresora.tipoimpresora}">Mostrar Tipo</td>
+                            <td th:text="${impresora.status}">Mostrar Status</td>
+                            <td th:text="${impresora.fechaimpresora}">Mostrar Fecha Alta</td>
+                            <td><a th:href="@{/editarimpresora/{idimpresora}(idimpresora=${impresora.idimpresora})}" th:text="Editar"></a></td>
+                            <td><a th:href="@{/eliminarimpresora(idimpresora=${impresora.idimpresora})}" th:text="Eliminar"></a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>   
         </div>
-        <div th:if="${perifericos == null or perifericos.empty}">
-            La lista de Asignacion está vacía
+        <div th:if="${impresoras == null or impresoras.empty}">
+            La lista de Impresora está vacía
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>
         <!-- jQuery -->
@@ -76,10 +68,10 @@
                 scrollX: true,
                 lengthMenu: [5, 10, 15, 20, 100, 200, 500],
                 columnDefs: [
-                    {className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},
-                    {orderable: false, targets: [10, 11]},
-                    {searchable: false, targets: [10, 11]},
-                    {width: "30%", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+                    {className: "centered", targets: [0, 1, 2, 3, 4]},
+                    {orderable: false, targets: [0, 1, 2]},
+                    {searchable: false, targets: [0, 1, 2]},
+                    {width: "30%", targets: [0, 1, 2]}
                 ],
                 pageLength: 10,
                 destroy: true,

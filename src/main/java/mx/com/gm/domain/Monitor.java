@@ -30,5 +30,5 @@ public class Monitor implements Serializable {
 
     private boolean status;
     
-    private Date fechamonitor;
+    private java.sql.Date fechamonitor;
 }

@@ -1,7 +1,6 @@
 package mx.com.gm.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,6 +36,6 @@ public class Empleado implements Serializable {
 
     private Integer ext;
 
-    private Date fechaempleado;
+    private java.sql.Date fechaempleado;
 
 }

@@ -28,5 +28,5 @@ public class Impresora implements Serializable {
     
     private boolean status;
     
-    private Date fechaimpresora;
+    private java.sql.Date fechaimpresora;
 }

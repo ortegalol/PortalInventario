@@ -26,5 +26,5 @@ public class Teclado implements Serializable {
     
     private boolean status;
     
-    private Date fechateclado;
+    private java.sql.Date fechateclado;
 }

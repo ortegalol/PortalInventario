@@ -55,7 +55,7 @@
             </div>   
         </div>
         <div th:if="${pcs == null or pcs.empty}">
-            La lista de Asignacion está vacía
+            La lista de Pc está vacía
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>
         <!-- jQuery -->
@@ -79,8 +79,8 @@
                 lengthMenu: [5, 10, 15, 20, 100, 200, 500],
                 columnDefs: [
                     {className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]},
-                    {orderable: false, targets: [10, 11]},
-                    {searchable: false, targets: [10, 11]},
+                    {orderable: false, targets: [11, 12]},
+                    {searchable: false, targets: [11, 12]},
                     {width: "30%", targets: [0, 1, 2]}
                 ],
                 pageLength: 10,
@@ -99,8 +99,21 @@
                         next: "Siguiente",
                         previous: "Anterior"
                     }
+                },
+                createdRow: function (row, data) {
+                    if (data[9] === 'true') {
+                        $('td', row).eq(9).css('background-color', 'green');
+                        $('td', row).eq(9).text('Asignado');
+                    } else {
+                        $('td', row).eq(9).css('background-color', 'red');
+                        $('td', row).eq(9).text('Sin Asignar');
+                    }
                 }
+
+
+
             };
+
 
             const initDataTable = async () => {
                 if (dataTableIsInitialized) {
@@ -115,5 +128,4 @@
                 initDataTable();
             });
         </script>
-
     </body>

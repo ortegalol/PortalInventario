@@ -26,5 +26,5 @@ public class Telefono implements Serializable {
     
     private boolean status;
     
-    private Date fechatelefono;
+    private java.sql.Date fechatelefono;
 }

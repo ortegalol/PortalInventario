@@ -26,5 +26,5 @@ public class Pinpad implements Serializable {
     
     private boolean status;
     
-    private Date fechapinpad;
+    private java.sql.Date fechapinpad;
 }

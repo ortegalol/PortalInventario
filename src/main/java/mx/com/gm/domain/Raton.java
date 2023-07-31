@@ -26,5 +26,5 @@ public class Raton implements Serializable {
     
     private boolean status;
     
-    private Date fecharaton;
+    private java.sql.Date fecharaton;
 }

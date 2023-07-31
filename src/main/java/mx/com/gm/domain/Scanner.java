@@ -28,5 +28,5 @@ public class Scanner implements Serializable {
 
     private boolean status;
     
-    private Date fechascanner;
+    private java.sql.Date fechascanner;
 }

@@ -38,6 +38,6 @@ public class Pc implements Serializable {
 
     private boolean status;
     
-    private Date fechapc;
+    private java.sql.Date fechapc;
 
 }

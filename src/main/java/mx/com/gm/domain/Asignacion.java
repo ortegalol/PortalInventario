@@ -38,6 +38,6 @@ public class Asignacion implements Serializable {
     
     private Integer idpinpad;
     
-    private Date fechaasignacion;
+    private java.sql.Date fechaasignacion;
 
 }

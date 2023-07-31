@@ -49,15 +49,19 @@
                             <div class="d-flex justify-content-end mt-3">
                                 <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
                                 <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                                <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
                             </div>
-
                     </div>
 
                     <!-- CPU -->
                     <div class="tab-pane fade" id="cpu">
                         <!-- Formulario de CPU -->
-
-
                         <label for="seriepc">Serie PC:</label>
                         <select class="form-control" name="seriepc" id="seriePcInput">
                             <option value="">Seleccionar PC Disponible</option>
@@ -93,22 +97,28 @@
 
                         <!-- Botones adicionales en la pestaña CPU -->
                         <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
                             <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
                         </div>
                     </div>
 
                     <!-- Monitor -->
                     <div class="tab-pane fade" id="monitor">
                         <!-- Formulario de Monitor -->
-
                         <label for="serie">Serie Monitor:</label>
                         <select class="form-control" name="serie" id="serieMoniInput">
                             <option value="">Seleccionar Monitores Disponible</option>
                             <option th:each="monitor : ${monitores}" th:value="${monitor.serie}" th:text="${monitor.serie}"></option>
                         </select>
 
-                        
                         <label for="idmoni">ID Monitor:</label>
                         <input type="text" class="form-control" name="idmoni" id="idmoni"/>
 
@@ -120,10 +130,250 @@
 
                         <!-- Botones adicionales en la pestaña Monitor -->
                         <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
                             <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
                         </div>
                     </div>
+
+                    <div class="tab-pane fade" id="teclado">
+                        <!-- Formulario de Teclado -->
+                        <label for="serieteclado">Serie Teclado:</label>
+                        <select class="form-control" name="serieteclado" id="serieTecladoInput">
+                            <option value="">Seleccionar Teclados Disponible</option>
+                            <option th:each="teclado : ${teclados}" th:value="${teclado.serieteclado}" th:text="${teclado.serieteclado}"></option>
+                        </select>
+
+                        <label for="idteclado">ID Teclado:</label>
+                        <input type="text" class="form-control" name="idteclado" id="idteclado"/>
+
+                        <label for="marcateclado">Marca Teclado:</label>
+                        <input type="text" class="form-control" name="marcateclado" id="marcateclado"/>
+
+                        <label for="modeloteclado">Modelo Teclado:</label>
+                        <input type="text" class="form-control" name="modeloteclado" id="modeloteclado"/>
+
+                        <!-- Botones adicionales en la pestaña Teclado -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="raton">
+                        <!-- Formulario de Raton -->
+                        <label for="serieraton">Serie Raton:</label>
+                        <select class="form-control" name="serieraton" id="serieRatonInput">
+                            <option value="">Seleccionar Raton Disponible</option>
+                            <option th:each="raton : ${ratones}" th:value="${raton.serieraton}" th:text="${raton.serieraton}"></option>
+                        </select>
+
+                        <label for="idraton">ID Raton:</label>
+                        <input type="text" class="form-control" name="idraton" id="idraton"/>
+
+                        <label for="marcaraton">Marca Raton:</label>
+                        <input type="text" class="form-control" name="marcaraton" id="marcaraton"/>
+
+                        <label for="modeloraton">Modelo Raton:</label>
+                        <input type="text" class="form-control" name="modeloraton" id="modeloraton"/>
+
+                        <!-- Botones adicionales en la pestaña Raton -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="impresora">
+                        <!-- Formulario de Impresora -->
+                        <label for="serieimpresora">Serie Impresora:</label>
+                        <select class="form-control" name="serieimpresora" id="serieImpresoraInput">
+                            <option value="">Seleccionar Impresoras Disponible</option>
+                            <option th:each="impresora : ${impresoras}" th:value="${impresora.serieimpresora}" th:text="${impresora.serieimpresora}"></option>
+                        </select>
+
+                        <label for="idimpresora">ID Impresora:</label>
+                        <input type="text" class="form-control" name="idimpresora" id="idimpresora"/>
+
+                        <label for="marcaimpresora">Marca Impresora:</label>
+                        <input type="text" class="form-control" name="marcaimpresora" id="marcaimpresora"/>
+
+                        <label for="modeloimpresora">Modelo Impresora:</label>
+                        <input type="text" class="form-control" name="modeloimpresora" id="modeloimpresora"/>
+
+                        <label for="tipoimpresora">Tipo Impresora:</label>
+                        <input type="text" class="form-control" name="tipoimpresora" id="tipoimpresora"/>
+
+                        <!-- Botones adicionales en la pestaña Impresora -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="ups">
+                        <!-- Formulario de Ups -->
+                        <label for="serieups">Serie Ups:</label>
+                        <select class="form-control" name="serieups" id="serieUpsInput">
+                            <option value="serieups">Seleccionar Ups Disponible</option>
+                            <option th:each="ups : ${upss}" th:value="${ups.serieups}" th:text="${ups.serieups}"></option>
+                        </select>
+
+                        <label for="idups">ID Ups:</label>
+                        <input type="text" class="form-control" name="idups" id="idups"/>
+
+                        <label for="marcaups">Marca Ups:</label>
+                        <input type="text" class="form-control" name="marcaups" id="marcaups"/>
+
+                        <label for="modeloups">Modelo Ups:</label>
+                        <input type="text" class="form-control" name="modeloups" id="modeloups"/>
+
+                        <!-- Botones adicionales en la pestaña Ups -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
+                        </div>
+                    </div>                    
+
+                    <div class="tab-pane fade" id="scanner">
+                        <!-- Formulario de Scanner -->
+                        <label for="seriescanner">Serie Scanner:</label>
+                        <select class="form-control" name="seriescanner" id="serieScannerInput">
+                            <option value="">Seleccionar Scanneres Disponible</option>
+                            <option th:each="scanner : ${scanneres}" th:value="${scanner.seriescanner}" th:text="${scanner.seriescanner}"></option>
+                        </select>
+
+                        <label for="idscanner">ID Scanner:</label>
+                        <input type="text" class="form-control" name="idscanner" id="idscanner"/>
+
+                        <label for="marcascanner">Marca Scanner:</label>
+                        <input type="text" class="form-control" name="marcascanner" id="marcascanner"/>
+
+                        <label for="modeloscanner">Modelo Scanner:</label>
+                        <input type="text" class="form-control" name="modeloscanner" id="modeloscanner"/>
+
+                        <label for="tiposcanner">Tipo Scanner:</label>
+                        <input type="text" class="form-control" name="tiposcanner" id="tiposcanner"/>
+
+                        <!-- Botones adicionales en la pestaña Scanner -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pinpad">
+                        <!-- Formulario de PinPad -->
+                        <label for="seriepinpad">Serie Pinpad:</label>
+                        <select class="form-control" name="seriepinPad" id="seriePinpadInput">
+                            <option value="">Seleccionar Pinpads Disponible</option>
+                            <option th:each="pinpad : ${pinpads}" th:value="${pinpad.seriepinpad}" th:text="${pinpad.seriepinpad}"></option>
+                        </select>
+
+                        <label for="idpinpad">ID Pinpad:</label>
+                        <input type="text" class="form-control" name="idpinpad" id="idpinpad"/>
+
+                        <label for="marcapinpad">Marca Pinpad:</label>
+                        <input type="text" class="form-control" name="marcapinpad" id="marcapinpad"/>
+
+                        <label for="modelopinpad">Modelo Pinpad:</label>
+                        <input type="text" class="form-control" name="modelopinpad" id="modelopinpad"/>
+
+                        <!-- Botones adicionales en la pestaña PinPad -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('telefono')" formnovalidate>Asignar Telefono</button>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="telefono">
+                        <!-- Formulario de Telefono -->
+                        <label for="serietelefono">Serie Telefono:</label>
+                        <select class="form-control" name="serietelefono" id="serieTelefonoInput">
+                            <option value="">Seleccionar Telefonos Disponible</option>
+                            <option th:each="telefono : ${telefonos}" th:value="${telefono.serietelefono}" th:text="${telefono.serietelefono}"></option>
+                        </select>
+
+                        <label for="idtelefono">ID Telefono:</label>
+                        <input type="text" class="form-control" name="idtelefono" id="idtelefono"/>
+
+                        <label for="marcatelefono">Marca Telefono:</label>
+                        <input type="text" class="form-control" name="marcatelefono" id="marcatelefono"/>
+
+                        <label for="modelotelefono">Modelo Telefono:</label>
+                        <input type="text" class="form-control" name="modelotelefono" id="modelotelefono"/>
+
+                        <!-- Botones adicionales en la pestaña Telefono -->
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('datos-empleado')" formnovalidate>Editar Empleado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('cpu')" formnovalidate>Asignar CPU</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('monitor')" formnovalidate>Asignar Monitor</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('teclado')" formnovalidate>Asignar Teclado</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('raton')" formnovalidate>Asignar Raton</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('impresora')" formnovalidate>Asignar Impresora</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('ups')" formnovalidate>Asignar Ups</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('scanner')" formnovalidate>Asignar Scanner</button>
+                            <button type="button" class="btn btn-primary me-2" onclick="mostrarPestana('pinpad')" formnovalidate>Asignar Pinpad</button>
+
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                     <input type="submit" class="btn btn-dark ms-2" value="Guardar" />
@@ -209,5 +459,134 @@
                 });
             });
         </script>
+
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Teclado"
+                $("#serieTecladoInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSerieTeclado = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/teclado/" + selectedSerieTeclado, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idteclado").val(data.idteclado);
+                        $("#marcateclado").val(data.marcateclado);
+                        $("#modeloteclado").val(data.modeloteclado);
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Raton"
+                $("#serieRatonInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSerieRaton = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/raton/" + selectedSerieRaton, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idraton").val(data.idraton);
+                        $("#marcaraton").val(data.marcaraton);
+                        $("#modeloraton").val(data.modeloraton);
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Impresora"
+                $("#serieImpresoraInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSerieImpresora = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/impresora/" + selectedSerieImpresora, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idimpresora").val(data.idimpresora);
+                        $("#marcaimpresora").val(data.marcaimpresora);
+                        $("#modeloimpresora").val(data.modeloimpresora);
+                        $("#tipoimpresora").val(data.tipoimpresora);
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Ups"
+                $("#serieUpsInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSerieUps = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/ups/" + selectedSerieUps, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idups").val(data.idups);
+                        $("#marcaups").val(data.marcaups);
+                        $("#modeloups").val(data.modeloups);
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Scanner"
+                $("#serieScannerInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSerieScanner = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/scanner/" + selectedSerieScanner, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idscanner").val(data.idscanner);
+                        $("#marcascanner").val(data.marcascanner);
+                        $("#modeloscanner").val(data.modeloscanner);
+                        $("#tiposcanner").val(data.tiposcanner);
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Pinpad"
+                $("#seriePinpadInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSeriePinpad = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/pinpad/" + selectedSeriePinpad, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idpinpad").val(data.idpinpad);
+                        $("#marcapinpad").val(data.marcapinpad);
+                        $("#modelopinpad").val(data.modelopinpad);
+                    });
+                });
+            });
+        </script>
+        
+        <script>
+            // Esperar a que el documento esté listo
+            $(document).ready(function () {
+                // Agregar un evento change al select de "Serie Telefono"
+                $("#serieTelefonoInput").change(function () {
+                    // Obtener el valor seleccionado del select
+                    var selectedSerieTelefono = $(this).val();
+                    // Realizar una petición al servidor para obtener la información del monitor seleccionado
+                    $.get("/telefono/" + selectedSerieTelefono, function (data) {
+                        // Rellenar los campos con la información recibida del servidor
+                        $("#idtelefono").val(data.idtelefono);
+                        $("#marcatelefono").val(data.marcatelefono);
+                        $("#modelotelefono").val(data.modelotelefono);
+                    });
+                });
+            });
+        </script>
+        
     </body>
 </html>

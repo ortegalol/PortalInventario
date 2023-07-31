@@ -26,5 +26,5 @@ public class Ups implements Serializable {
     
     private boolean status;
     
-    private Date fechaups;
+    private java.sql.Date fechaups;
 }

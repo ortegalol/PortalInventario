@@ -68,9 +68,9 @@
                 scrollX: true,
                 lengthMenu: [5, 10, 15, 20, 100, 200, 500],
                 columnDefs: [
-                    {className: "centered", targets: [0, 1, 2, 3, 4]},
-                    {orderable: false, targets: [0, 1, 2]},
-                    {searchable: false, targets: [0, 1, 2]},
+                    {className: "centered", targets: [0, 1, 2, 3, 4, 5]},
+                    {orderable: false, targets: [6, 7]},
+                    {searchable: false, targets: [6, 7]},
                     {width: "30%", targets: [0, 1, 2]}
                 ],
                 pageLength: 10,
@@ -88,6 +88,15 @@
                         last: "Último",
                         next: "Siguiente",
                         previous: "Anterior"
+                    }
+                },
+                createdRow: function (row, data) {
+                    if (data[4] === 'true') {
+                        $('td', row).eq(4).css('background-color', 'green');
+                        $('td', row).eq(4).text('Asignado');
+                    } else {
+                        $('td', row).eq(4).css('background-color', 'red');
+                        $('td', row).eq(4).text('Sin Asignar');
                     }
                 }
             };

@@ -351,7 +351,7 @@ public class ControladorInicio {
     public String eliminarTelefono(@RequestParam("idtelefono") Long idtelefono) {
         Telefono telefono = telefonoService.obtenerTelefonoPorId(idtelefono);
         telefonoService.eliminar(telefono);
-        return "redirect:/telefono";
+        return "redirect:/telefonos";
     }
 
     //  --------------------- Edicion Tablas ---------------------  
@@ -454,7 +454,7 @@ public class ControladorInicio {
         return "redirect:/teclados";
     }
 
-    @PostMapping("/actualizartaton/{idraton}")
+    @PostMapping("/actualizarraton/{idraton}")
     public String actualizarRaton(@PathVariable("idraton") Long idraton, @ModelAttribute Raton raton) {
         raton.setIdraton(idraton);
         ratonService.actualizar(raton);

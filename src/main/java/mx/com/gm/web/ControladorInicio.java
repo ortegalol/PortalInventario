@@ -1,5 +1,7 @@
+//  --------------------- Ubicación ---------------------
 package mx.com.gm.web;
 
+//  --------------------- Imports ---------------------
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -155,16 +157,6 @@ public class ControladorInicio {
     }
 
 //  --------------------- Formularios ---------------------
-//    @GetMapping("/alta_asignacion")
-//    public String alta_asignacion(Model model) {
-//        List<Empleado> empleados = empleadoService.listarEmpleados();
-//
-//        List<Pc> pcs = pcService.listarPcs().stream().filter(pc -> !pc.isStatus()).collect(Collectors.toList());
-//
-//        model.addAttribute("empleados", empleados);
-//        model.addAttribute("pcs", pcs);
-//        return "alta_asignacion";
-//    }
     @GetMapping("/alta_asignacion")
     public String alta_asignacion(Model model) {
         List<Empleado> empleados = empleadoService.listarEmpleados();
@@ -568,7 +560,7 @@ public class ControladorInicio {
             @RequestParam(value = "idups", required = false) Integer idups,
             @RequestParam(value = "idscanner", required = false) Integer idscanner,
             @RequestParam(value = "idpinpad", required = false) Integer idpinpad,
-            @RequestParam(value = "idtelefono", required = false) Integer idtelefono){
+            @RequestParam(value = "idtelefono", required = false) Integer idtelefono) {
 
         Asignacion asignacion = new Asignacion();
         asignacion.setIdempleado(idempleado);

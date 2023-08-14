@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Datos del Equipo</title>
+        <meta charset="UTF-8"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
+
+        <style>
+            /* Cambiar el fondo y el color de las pestañas */
+            .nav-tabs .nav-link {
+                background-color: black;
+                color: white;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            /* Resaltar al pasar el ratón por encima */
+            .nav-tabs .nav-link:hover {
+                background-color: gray;
+                color: white;
+            }
+
+            /* Cambiar el color del texto de las pestañas activas */
+            .nav-tabs .nav-link.active {
+                background-color: gray; /* Fondo gris claro */
+                color: white; /* Texto blanco */
+            }
+
+        </style>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>        
+        <div class="container mt-5">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="datos-empleado-tab" data-bs-toggle="tab" href="#datos-empleado">Datos del Empleado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="cpu-tab" data-bs-toggle="tab" href="#cpu">CPU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="monitor-tab" data-bs-toggle="tab" href="#monitor">Monitor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="teclado-tab" data-bs-toggle="tab" href="#teclado">Teclado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="raton-tab" data-bs-toggle="tab" href="#raton">Raton</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="impresora-tab" data-bs-toggle="tab" href="#impresora">Impresora</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="ups-tab" data-bs-toggle="tab" href="#ups">Ups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="scanner-tab" data-bs-toggle="tab" href="#scanner">Scanner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pinpad-tab" data-bs-toggle="tab" href="#pinpad">Pinpad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="telefono-tab" data-bs-toggle="tab" href="#telefono">Telefono</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="datos-empleado" th:classappend="${tab == 'empleado' ? 'show active' : ''}">
+                    <form th:action="@{/guardarEmpleado}" method="post" th:object="${empleado}" class="row g-3">
+                        <input type="hidden" name="idempleado" th:value="${idempleado}" />
+
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="numempleado" class="form-label">Num Empleado:</label>
+                            <input type="text" class="form-control" name="numempleado" th:field="*{numempleado}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="rfc" class="form-label">RFC:</label>
+                            <input type="text" class="form-control" name="rfc" th:field="*{rfc}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="curp" class="form-label">CURP:</label>
+                            <input type="text" class="form-control" name="curp" th:field="*{curp}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="departamento" class="form-label">Departamento:</label>
+                            <input type="text" class="form-control" name="departamento" th:field="*{departamento}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="puesto" class="form-label">Puesto:</label>
+                            <input type="text" class="form-control" name="puesto" th:field="*{puesto}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">E-mail:</label>
+                            <input type="email" class="form-control" name="email" th:field="*{email}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="ext" class="form-label">Extension:</label>
+                            <input type="ext" class="form-control" name="ext" th:field="*{ext}" />
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="cpu" th:classappend="${tab == 'cpu' ? 'show active' : ''}">
+                    <form th:action="@{/guardarPc}" method="post" th:object="${pc}" class="row g-3">
+                        <input type="hidden" name="idpc" th:value="${idpc}" />
+
+                        <div class="col-md-4">
+                            <label for="seriepc" class="form-label">Serie PC:</label>
+                            <input type="text" class="form-control" name="seriepc" th:field="*{seriepc}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcapc" class="form-label">Marca PC:</label>
+                            <input type="text" class="form-control" name="marcapc" th:field="*{marcapc}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modelopc" class="form-label">Modelo PC:</label>
+                            <input type="text" class="form-control" name="modelopc" th:field="*{modelopc}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="procesador" class="form-label">Procesador:</label>
+                            <input type="text" class="form-control" name="procesador" th:field="*{procesador}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="velocidad" class="form-label">Velocidad:</label>
+                            <input type="text" class="form-control" name="velocidad" th:field="*{velocidad}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="memoriaram" class="form-label">Memoria RAM:</label>
+                            <input type="text" class="form-control" name="memoriaram" th:field="*{memoriaram}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="almacenamiento" class="form-label">Almacenamiento:</label>
+                            <input type="text" class="form-control" name="almacenamiento" th:field="*{almacenamiento}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="origen" class="form-label">Origen:</label>
+                            <select class="form-select" name="origen" th:field="*{origen}" required>
+                                <option value="" disabled selected>Elige el origen</option>
+                                <option value="ARRENDADO">ARRENDADO</option>
+                                <option value="PROPIO">PROPIO</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="estado" class="form-label">Estado:</label>
+                            <select class="form-select" name="estado" th:field="*{estado}" required>
+                                <option value="" disabled selected>Elige el estado</option>
+                                <option value="NUEVO">NUEVO</option>
+                                <option value="USADO">USADO</option>
+                                <option value="DAÑADO">DAÑADO</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="monitor" th:classappend="${tab == 'monitor' ? 'show active' : ''}">
+                    <form th:action="@{/guardarMonitor}" method="post" th:object="${monitor}" class="row g-3">
+                        <input type="hidden" name="idmoni" th:value="${idmoni}" />
+
+                        <div class="col-md-4">
+                            <label for="serie" class="form-label">Serie Monitor:</label>
+                            <input type="text" class="form-control" name="serie" th:field="*{serie}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marca" class="form-label">Marca Monitor:</label>
+                            <input type="text" class="form-control" name="marca" th:field="*{marca}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modelo" class="form-label">Modelo Monitor:</label>
+                            <input type="text" class="form-control" name="modelo" th:field="*{modelo}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="origen" class="form-label">Origen:</label>
+                            <select class="form-select" name="origen" th:field="*{origen}" required>
+                                <option value="" disabled selected>Elige el origen</option>
+                                <option value="ARRENDADO">ARRENDADO</option>
+                                <option value="PROPIO">PROPIO</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="estado" class="form-label">Estado:</label>
+                            <select class="form-select" name="estado" th:field="*{estado}" required>
+                                <option value="" disabled selected>Elige el estado</option>
+                                <option value="NUEVO">NUEVO</option>
+                                <option value="USADO">USADO</option>
+                                <option value="DAÑADO">DAÑADO</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="teclado" th:classappend="${tab == 'teclado' ? 'show active' : ''}">
+                    <form th:action="@{/guardarTeclado}" method="post" th:object="${teclado}" class="row g-3">
+                        <input type="hidden" name="idteclado" th:value="${idteclado}" />
+
+                        <div class="col-md-4">
+                            <label for="serieteclado" class="form-label">Serie Teclado:</label>
+                            <input type="text" class="form-control" name="serieteclado" th:field="*{serieteclado}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcateclado" class="form-label">Marca Teclado:</label>
+                            <input type="text" class="form-control" name="marcateclado" th:field="*{marcateclado}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modeloteclado" class="form-label">Modelo Teclado:</label>
+                            <input type="text" class="form-control" name="modeloteclado" th:field="*{modeloteclado}" />
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="raton" th:classappend="${tab == 'raton' ? 'show active' : ''}">
+                    <form th:action="@{/guardarRaton}" method="post" th:object="${raton}" class="row g-3">
+                        <input type="hidden" name="idraton" th:value="${idraton}" />
+
+                        <div class="col-md-4">
+                            <label for="serieraton" class="form-label">Serie Raton:</label>
+                            <input type="text" class="form-control" name="serieraton" th:field="*{serieraton}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcaraton" class="form-label">Marca Raton:</label>
+                            <input type="text" class="form-control" name="marcaraton" th:field="*{marcaraton}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modeloraton" class="form-label">Modelo Raton:</label>
+                            <input type="text" class="form-control" name="modeloraton" th:field="*{modeloraton}" />
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="impresora" th:classappend="${tab == 'impresora' ? 'show active' : ''}">
+                    <form th:action="@{/guardarImpresora}" method="post" th:object="${impresora}" class="row g-3">
+                        <input type="hidden" name="idimpresora" th:value="${idimpresora}" />
+
+                        <div class="col-md-4">
+                            <label for="serieimpresora" class="form-label">Serie Impresora:</label>
+                            <input type="text" class="form-control" name="serieimpresora" th:field="*{serieimpresora}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcaimpresora" class="form-label">Marca Impresora:</label>
+                            <input type="text" class="form-control" name="marcaimpresora" th:field="*{marcaimpresora}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modeloimpresora" class="form-label">Modelo Impresora:</label>
+                            <input type="text" class="form-control" name="modeloimpresora" th:field="*{modeloimpresora}" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="tipoimpresora" class="form-label">Tipo Impresora:</label>
+                            <select class="form-select" name="tipoimpresora" th:field="*{tipoimpresora}" required>
+                                <option value="" disabled selected>Elegir el tipo</option>
+                                <option value="MINIPRINTER">MINIPRINTER</option>
+                                <option value="MULTIFUNCIONAL">MULTIFUNCIONAL</option>
+                                <option value="CENEFAS">CENEFAS</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="ups" th:classappend="${tab == 'ups' ? 'show active' : ''}">
+                    <form th:action="@{/guardarUps}" method="post" th:object="${ups}" class="row g-3">
+                        <input type="hidden" name="idups" th:value="${idups}" />
+
+                        <div class="col-md-4">
+                            <label for="serieups" class="form-label">Serie Ups:</label>
+                            <input type="text" class="form-control" name="serieups" th:field="*{serieups}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcaups" class="form-label">Marca Ups:</label>
+                            <input type="text" class="form-control" name="marcaups" th:field="*{marcaups}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modeloups" class="form-label">Modelo Ups:</label>
+                            <input type="text" class="form-control" name="modeloups" th:field="*{modeloups}" />
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="scanner" th:classappend="${tab == 'scanner' ? 'show active' : ''}">
+                    <form th:action="@{/guardarScanner}" method="post" th:object="${scanner}" class="row g-3">
+                        <input type="hidden" name="idscanner" th:value="${idscanner}" />
+
+                        <div class="col-md-4">
+                            <label for="seriescanner" class="form-label">Serie Scanner:</label>
+                            <input type="text" class="form-control" name="seriescanner" th:field="*{seriescanner}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcascanner" class="form-label">Marca Scanner:</label>
+                            <input type="text" class="form-control" name="marcascanner" th:field="*{marcascanner}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modeloscanner" class="form-label">Modelo Scanner:</label>
+                            <input type="text" class="form-control" name="modeloscanner" th:field="*{modeloscanner}" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="tiposcanner" class="form-label">Tipo Scanner:</label>
+                            <select class="form-select" name="tiposcanner" th:field="*{tiposcanner}" required>
+                                <option value="" disabled selected>Elegir el tipo</option>
+                                <option value="PISTOLA">PISTOLA</option>
+                                <option value="CAMA">CAMA</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="pinpad" th:classappend="${tab == 'pinpad' ? 'show active' : ''}">
+                    <form th:action="@{/guardarPinpad}" method="post" th:object="${pinpad}" class="row g-3">
+                        <input type="hidden" name="idpinpad" th:value="${idpinpad}" />
+
+                        <div class="col-md-4">
+                            <label for="seriepinpad" class="form-label">Serie Pinpad:</label>
+                            <input type="text" class="form-control" name="seriepinpad" th:field="*{seriepinpad}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcapinpad" class="form-label">Marca Pinpad:</label>
+                            <input type="text" class="form-control" name="marcapinpad" th:field="*{marcapinpad}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modelopinpad" class="form-label">Modelo Pinpad:</label>
+                            <input type="text" class="form-control" name="modelopinpad" th:field="*{modelopinpad}" />
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="tab-pane fade" id="telefono" th:classappend="${tab == 'telefono' ? 'show active' : ''}">
+                    <form th:action="@{/guardarTelefono}" method="post" th:object="${telefono}" class="row g-3">
+                        <input type="hidden" name="idtelefono" th:value="${idtelefono}" />
+
+                        <div class="col-md-4">
+                            <label for="serietelefono" class="form-label">Serie Teléfono:</label>
+                            <input type="text" class="form-control" name="serietelefono" th:field="*{serietelefono}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="marcatelefono" class="form-label">Marca Teléfono:</label>
+                            <input type="text" class="form-control" name="marcatelefono" th:field="*{marcatelefono}" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="modelotelefono" class="form-label">Modelo Teléfono:</label>
+                            <input type="text" class="form-control" name="modelotelefono" th:field="*{modelotelefono}" />
+                        </div>
+
+                        <div class="col-md-12 text-end">
+                            <button type="reset" class="btn btn-dark btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-dark me-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <!-- Custom JS -->
+        <script src="js/script.js" type="text/javascript"></script>
+
+
+    </body>
+</html>

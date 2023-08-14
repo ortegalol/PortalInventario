@@ -75,7 +75,12 @@ public class ControladorInicio {
 //  --------------------- Pagina inicial ---------------------
     @GetMapping("/")
     public String inicio() {
-        return "home";
+        return "inicio/home";
+    }
+    
+    @GetMapping("/prueba")
+    public String prueba() {
+        return "prueba";
     }
 
 //  --------------------- Tablas ---------------------
@@ -83,77 +88,77 @@ public class ControladorInicio {
     public String empleados(Model model, @AuthenticationPrincipal User user) {
         var empleado = empleadoService.listarEmpleados();
         model.addAttribute("empleados", empleado);
-        return "empleados";
+        return "consultas/empleados";
     }
 
     @GetMapping("/pcs")
     public String pcs(Model model, @AuthenticationPrincipal User user) {
         var pc = pcService.listarPcs();
         model.addAttribute("pcs", pc);
-        return "pcs";
+        return "consultas/pcs";
     }
 
     @GetMapping("/monitores")
     public String monitores(Model model, @AuthenticationPrincipal User user) {
         var monitor = monitorService.listarMonitores();
         model.addAttribute("monitores", monitor);
-        return "monitores";
+        return "consultas/monitores";
     }
 
     @GetMapping("/asignaciones")
     public String asignaciones(Model model, @AuthenticationPrincipal User user) {
         var asignacioncom = asignacioncomService.listarAsignaciones();
         model.addAttribute("asignaciones", asignacioncom);
-        return "asignaciones";
+        return "consultas/asignaciones";
     }
 
     @GetMapping("/teclados")
     public String teclados(Model model, @AuthenticationPrincipal User user) {
         var teclado = tecladoService.listarTeclados();
         model.addAttribute("teclados", teclado);
-        return "teclados";
+        return "consultas/teclados";
     }
 
     @GetMapping("/ratones")
     public String ratones(Model model, @AuthenticationPrincipal User user) {
         var raton = ratonService.listarRatones();
         model.addAttribute("ratones", raton);
-        return "ratones";
+        return "consultas/ratones";
     }
 
     @GetMapping("/ups")
     public String ups(Model model, @AuthenticationPrincipal User user) {
         var ups = upsService.listarUps();
         model.addAttribute("ups", ups);
-        return "ups";
+        return "consultas/ups";
     }
 
     @GetMapping("/impresoras")
     public String impresoras(Model model, @AuthenticationPrincipal User user) {
         var impresora = impresoraService.listarImpresoras();
         model.addAttribute("impresoras", impresora);
-        return "impresoras";
+        return "consultas/impresoras";
     }
 
     @GetMapping("/scanneres")
     public String Scanneres(Model model, @AuthenticationPrincipal User user) {
         var scanner = scannerService.listarScanneres();
         model.addAttribute("scanneres", scanner);
-        return "scanneres";
+        return "consultas/scanneres";
     }
 
     @GetMapping("/telefonos")
     public String Telefonos(Model model, @AuthenticationPrincipal User user) {
         var telefono = telefonoService.listarTelefonos();
         model.addAttribute("telefonos", telefono);
-        return "telefonos";
+        return "consultas/telefonos";
     }
 
     @GetMapping("/pinpads")
     public String Pinpads(Model model, @AuthenticationPrincipal User user) {
         var pinpad = pinpadService.listarPinpad();
         model.addAttribute("pinpads", pinpad);
-        return "pinpads";
+        return "consultas/pinpads";
     }
 
 //  --------------------- Formularios ---------------------
@@ -182,7 +187,7 @@ public class ControladorInicio {
         model.addAttribute("pinpads", pinpads);
         model.addAttribute("telefonos", telefonos);
 
-        return "alta_asignacion";
+        return "formularios/alta_asignacion";
     }
 
     @GetMapping("/altas")
@@ -211,7 +216,7 @@ public class ControladorInicio {
         model.addAttribute("pinpad", pinpad);
         model.addAttribute("telefono", telefono);
 
-        return "altas";
+        return "formularios/altas";
     }
 
 //  --------------------- Funciones Formulario ---------------------

@@ -12,7 +12,7 @@
             <div class="bg-dark">
                 <nav class="navbar navbar-dark bg-dark navbar-expand">
                     <div class="container-fluid d-flex justify-content-between">
-                        <img src="logo.png" alt="Logo" class="navbar-brand" style="height: 50px; width: auto;">
+                        <img src="png/logo.png" alt="Logo" class="navbar-brand" style="height: 50px; width: auto;">
                             <ul sec:authorize="isAuthenticated()" class="navbar-nav ms-auto">
                                 <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
                                     <li class="nav-item">
@@ -22,18 +22,28 @@
                                         <a class="nav-link dropdown-toggle text-white" href="#" id="consultasDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultas</a>
                                         <div class="dropdown-menu" aria-labelledby="consultasDropdown">
                                             <a class="dropdown-item" href="/empleados">Empleados</a>
-                                            <a class="dropdown-item" href="/pcs">Pc</a>
-                                            <a class="dropdown-item" href="/monitores">Monitores</a>
-                                            <a class="dropdown-item" href="/teclados">Teclados</a>
-                                            <a class="dropdown-item" href="/ratones">Ratones</a>
-                                            <a class="dropdown-item" href="/ups">Ups</a>
-                                            <a class="dropdown-item" href="/impresoras">Impresoras</a>
-                                            <a class="dropdown-item" href="/scanneres">Scanneres</a>
-                                            <a class="dropdown-item" href="/telefonos">Telefonos</a>
-                                            <a class="dropdown-item" href="/pinpads">Pin pads</a>
+
+
+                                            <!-- Submenú para Equipos -->
+                                            <div class="dropdown-submenu">
+                                                <a class="dropdown-item dropdown-toggle" href="#">Equipos</a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="/pcs">Pc</a>
+                                                    <a class="dropdown-item" href="/monitores">Monitores</a>
+                                                    <a class="dropdown-item" href="/teclados">Teclados</a>
+                                                    <a class="dropdown-item" href="/ratones">Ratones</a>
+                                                    <a class="dropdown-item" href="/ups">Ups</a>
+                                                    <a class="dropdown-item" href="/impresoras">Impresoras</a>
+                                                    <a class="dropdown-item" href="/scanneres">Scanneres</a>
+                                                    <a class="dropdown-item" href="/telefonos">Telefonos</a>
+                                                    <a class="dropdown-item" href="/pinpads">Pin pads</a>
+                                                </div>
+                                            </div>
+
                                             <a class="dropdown-item" href="/asignaciones">Asignacion</a>
                                         </div>
                                     </li>
+
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle text-white" href="#" id="operacionesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Operaciones</a>
                                         <div class="dropdown-menu" aria-labelledby="operacionesDropdown">
@@ -43,7 +53,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link text-white" href="#">Formatos</a>
+                                        <a class="nav-link text-white" href="/prueba">Formatos</a>
                                     </li>
 
                                     <li class="nav-item dropdown">

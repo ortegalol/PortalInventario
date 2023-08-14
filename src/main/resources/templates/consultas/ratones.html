@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Portal Inventario</title>
+        <meta charset="UTF-8">
+            <!-- Bootstrap -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+            <!-- DataTable -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+            <!-- Font Awesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+            <!-- Custom CSS -->
+            <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
+            <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
+            <link rel="stylesheet" href="/css/style_tablas.css" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <div class="table-container">
+            <div th:if="${ratones != null and !ratones.empty}">
+                <br>
+                <table id="datatable_asing" class="table table-striped custom-table">
+                    <thead>
+                        <tr>
+                            <th>Serie</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Status</th>
+                            <th>Fecha Alta</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableinv">
+                        <tr th:each="raton : ${ratones}">
+                            <td th:text="${raton.serieraton}">Mostrar Serie</td>
+                            <td th:text="${raton.marcaraton}">Mostrar Marca</td>
+                            <td th:text="${raton.modeloraton}">Mostrar Modelo</td>
+                            <td th:text="${raton.status}">Mostrar Status</td>
+                            <td th:text="${raton.fecharaton}">Mostrar Fecha Alta</td>
+                            <td><a th:href="@{/editarraton/{idraton}(idraton=${raton.idraton})}" th:text="Editar"></a></td>
+                            <td><a th:href="@{/eliminarraton(idraton=${raton.idraton})}" th:text="Eliminar"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>   
+        </div>
+        <div th:if="${ratones == null or ratones.empty}">
+            La lista de Ratones está vacía
+        </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <!-- DataTable -->
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <!-- Custom JS -->
+        <script src="js/script.js" type="text/javascript"></script>
+        <script src="js/script_ratones.js" type="text/javascript"></script>
+
+    </body>
+</html>

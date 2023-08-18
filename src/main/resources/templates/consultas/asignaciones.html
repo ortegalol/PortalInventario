@@ -9,6 +9,8 @@
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
             <!-- Font Awesome -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+            <!-- ColReorder CSS -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.4/css/colReorder.dataTables.min.css"/>
             <!-- Custom CSS -->
             <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
             <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
@@ -20,109 +22,121 @@
         <div class="table-container">
             <div th:if="${asignaciones != null and !asignaciones.empty}">
                 <br>
-                <table id="datatable_users" class="table table-striped custom-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre Empleado</th>
-                            <th>Número Empleado</th>
-                            <th>RFC</th>
-                            <th>CURP</th>
-                            <th>Departamento</th>
-                            <th>Puesto</th>
-                            <th>Email</th>
-                            <th>Serie PC</th>
-                            <th>Marca PC</th>
-                            <th>Modelo PC</th>
-                            <th>Procesador</th>
-                            <th>Velocidad</th>
-                            <th>Memoria RAM</th>
-                            <th>Almacenamiento</th>
-                            <th>Origen PC</th>
-                            <th>Estado PC</th>
-                            <th>Serie Monitor</th>
-                            <th>Marca Monitor</th>
-                            <th>Modelo Monitor</th>
-                            <th>Origen Monitor</th>
-                            <th>Estado Monitor</th>
-                            <th>Serie Teclado</th>
-                            <th>Marca Teclado</th>
-                            <th>Modelo Teclado</th>
-                            <th>Serie Raton</th>
-                            <th>Marca Raton</th>
-                            <th>Modelo Raton</th>
-                            <th>Serie Impresora</th>
-                            <th>Marca Impresora</th>
-                            <th>Modelo Impresora</th>
-                            <th>Tipo Impresora</th>
-                            <th>Serie UPS</th>
-                            <th>Marca UPS</th>
-                            <th>Modelo UPS</th>
-                            <th>Serie Scanner</th>
-                            <th>Marca Scanner</th>
-                            <th>Modelo Scanner</th>
-                            <th>Tipo Scanner</th>
-                            <th>Serie Pin pad</th>
-                            <th>Marca Pin pad</th>
-                            <th>Modelo Pin pad</th>
-                            <th>Serie Telefono</th>
-                            <th>Marca Telefono</th>
-                            <th>Modelo Telefono</th>
+                    <table id="datatable_users" class="table table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre Empleado</th>
+                                <th>Número Empleado</th>
+                                <th>RFC</th>
+                                <th>CURP</th>
+                                <th>Departamento</th>
+                                <th>Puesto</th>
+                                <th>Email</th>
+                                <th>Extension</th>
+                                <th>Serie PC</th>
+                                <th>Marca PC</th>
+                                <th>Modelo PC</th>
+                                <th>Procesador</th>
+                                <th>Velocidad</th>
+                                <th>Memoria RAM</th>
+                                <th>Almacenamiento</th>
+                                <th>Origen PC</th>
+                                <th>Estado PC</th>
+                                <th>Usuario</th>
+                                <th>Hostname</th>
+                                <th>Ip</th>
+                                <th>Mac Address</th>
+                                <th>Sistema Operativo</th>
+                                <th>Arquitectura</th>
+                                <th>Tipo</th>
+                                <th>Serie Monitor</th>
+                                <th>Marca Monitor</th>
+                                <th>Modelo Monitor</th>
+                                <th>Origen Monitor</th>
+                                <th>Estado Monitor</th>
+                                <th>Serie Teclado</th>
+                                <th>Marca Teclado</th>
+                                <th>Modelo Teclado</th>
+                                <th>Serie Raton</th>
+                                <th>Marca Raton</th>
+                                <th>Modelo Raton</th>
+                                <th>Serie Impresora</th>
+                                <th>Marca Impresora</th>
+                                <th>Modelo Impresora</th>
+                                <th>Tipo Impresora</th>
+                                <th>Serie UPS</th>
+                                <th>Marca UPS</th>
+                                <th>Modelo UPS</th>
+                                <th>Serie Scanner</th>
+                                <th>Marca Scanner</th>
+                                <th>Modelo Scanner</th>
+                                <th>Tipo Scanner</th>
+                                <th>Serie Pin pad</th>
+                                <th>Marca Pin pad</th>
+                                <th>Modelo Pin pad</th>
+                                <th>Serie Telefono</th>
+                                <th>Marca Telefono</th>
+                                <th>Modelo Telefono</th>
+                            </tr>
 
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableinv">
-                        <tr th:each="asignacion : ${asignaciones}">
-                            <td th:text="${asignacion.nombre_empleado}">Mostrar nombre</td>
-                            <td th:text="${asignacion.numempleado}">Mostrar número empleado</td>
-                            <td th:text="${asignacion.rfc}">Mostrar RFC</td>
-                            <td th:text="${asignacion.curp}">Mostrar CURP</td>
-                            <td th:text="${asignacion.departamento}">Mostrar departamento</td>
-                            <td th:text="${asignacion.puesto}">Mostrar puesto</td>
-                            <td th:text="${asignacion.email}">Mostrar email</td>
-                            <td th:text="${asignacion.seriepc}">Mostrar serie PC</td>
-                            <td th:text="${asignacion.marcapc}">Mostrar marca PC</td>
-                            <td th:text="${asignacion.modelopc}">Mostrar modelo PC</td>
-                            <td th:text="${asignacion.procesador}">Mostrar procesador</td>
-                            <td th:text="${asignacion.velocidad}">Mostrar velocidad</td>
-                            <td th:text="${asignacion.memoriaram}">Mostrar memoria RAM</td>
-                            <td th:text="${asignacion.almacenamiento}">Mostrar almacenamiento</td>
-                            <td th:text="${asignacion.origen_pc}">Mostrar origen PC</td>
-                            <td th:text="${asignacion.estado_pc}">Mostrar estado PC</td>
-                            <td th:text="${asignacion.serie_monitor}">Mostrar serie Monitor</td>
-                            <td th:text="${asignacion.marca_monitor}">Mostrar marca Monitor</td>
-                            <td th:text="${asignacion.modelo_monitor}">Mostrar modelo Monitor</td>
-                            <td th:text="${asignacion.origen_monitor}">Mostrar origen Monitor</td>
-                            <td th:text="${asignacion.estado_monitor}">Mostrar estado Monitor</td>
-                            <td th:text="${asignacion.serieteclado}">Mostrar serie Teclado</td>
-                            <td th:text="${asignacion.marcateclado}">Mostrar marca Teclado</td>
-                            <td th:text="${asignacion.modeloteclado}">Mostrar modelo Teclado</td>
-                            <td th:text="${asignacion.serieraton}">Mostrar serie Raton</td>
-                            <td th:text="${asignacion.marcaraton}">Mostrar marca Raton</td>
-                            <td th:text="${asignacion.modeloraton}">Mostrar modelo Raton</td>
-                            <td th:text="${asignacion.serieimpresora}">Mostrar serie Impresora</td>
-                            <td th:text="${asignacion.marcaimpresora}">Mostrar marca Impresora</td>
-                            <td th:text="${asignacion.modeloimpresora}">Mostrar modelo Impresora</td>
-                            <td th:text="${asignacion.tipoimpresora}">Mostrar tipo Impresora</td>
-                            <td th:text="${asignacion.serieups}">Mostrar serie UPS</td>
-                            <td th:text="${asignacion.marcaups}">Mostrar marca UPS</td>
-                            <td th:text="${asignacion.modeloups}">Mostrar modelo UPS</td>
-                            <td th:text="${asignacion.seriescanner}">Mostrar serie Scanner</td>
-                            <td th:text="${asignacion.marcascanner}">Mostrar marca Scanner</td>
-                            <td th:text="${asignacion.modeloscanner}">Mostrar modelo Scanner</td>
-                            <td th:text="${asignacion.tiposcanner}">Mostrar tipo Scanner</td>
-                            <td th:text="${asignacion.seriepinpad}">Mostrar serie Pinpad</td>
-                            <td th:text="${asignacion.marcapinpad}">Mostrar marca Pinpad</td>
-                            <td th:text="${asignacion.modelopinpad}">Mostrar modelo Pinpad</td>
-                            <td th:text="${asignacion.serietelefono}">Mostrar serie Telefono</td>
-                            <td th:text="${asignacion.marcatelefono}">Mostrar marca Telefono</td>
-                            <td th:text="${asignacion.modelotelefono}"Mostrar modelo Telefono></td>
-                            <td><a th:href="@{/editarempl/{idEmpleado}(idEmpleado=${asignacion.idasignacion})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarempl(idEmpleado=${asignacion.idasignacion})}" th:text="Eliminar"></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody id="tableinv">
+                            <tr th:each="asignacion : ${asignaciones}">
+                                <td th:text="${asignacion.nombre_empleado}">Mostrar Nombre</td>
+                                <td th:text="${asignacion.numempleado}">Mostrar Número Empleado</td>
+                                <td th:text="${asignacion.rfc}">Mostrar RFC</td>
+                                <td th:text="${asignacion.curp}">Mostrar CURP</td>
+                                <td th:text="${asignacion.departamento}">Mostrar Departamento</td>
+                                <td th:text="${asignacion.puesto}">Mostrar Puesto</td>
+                                <td th:text="${asignacion.email}">Mostrar Email</td>
+                                <td th:text="${asignacion.ext}">Mostrar Extension</td>
+                                <td th:text="${asignacion.seriepc}">Mostrar serie PC</td>
+                                <td th:text="${asignacion.marcapc}">Mostrar marca PC</td>
+                                <td th:text="${asignacion.modelopc}">Mostrar modelo PC</td>
+                                <td th:text="${asignacion.procesador}">Mostrar procesador</td>
+                                <td th:text="${asignacion.velocidad}">Mostrar velocidad</td>
+                                <td th:text="${asignacion.memoriaram}">Mostrar memoria RAM</td>
+                                <td th:text="${asignacion.almacenamiento}">Mostrar almacenamiento</td>
+                                <td th:text="${asignacion.origen_pc}">Mostrar origen PC</td>
+                                <td th:text="${asignacion.estado_pc}">Mostrar estado PC</td>
+                                <td th:text="${asignacion.usuario}">Mostrar Usuario</td>
+                                <td th:text="${asignacion.hostname}">Mostrar Hostname</td>
+                                <td th:text="${asignacion.ip}">Mostrar IP</td>
+                                <td th:text="${asignacion.macaddress}">Mostrar Mac Address</td>
+                                <td th:text="${asignacion.so}">Mostrar Sistema Operativo</td>
+                                <td th:text="${asignacion.arch}">Mostrar Arquitectura</td>
+                                <td th:text="${asignacion.tipo}">Mostrar Tipo</td>
+                                <td th:text="${asignacion.serie_monitor}">Mostrar serie Monitor</td>
+                                <td th:text="${asignacion.marca_monitor}">Mostrar marca Monitor</td>
+                                <td th:text="${asignacion.modelo_monitor}">Mostrar modelo Monitor</td>
+                                <td th:text="${asignacion.origen_monitor}">Mostrar origen Monitor</td>
+                                <td th:text="${asignacion.estado_monitor}">Mostrar estado Monitor</td>
+                                <td th:text="${asignacion.serieteclado}">Mostrar serie Teclado</td>
+                                <td th:text="${asignacion.marcateclado}">Mostrar marca Teclado</td>
+                                <td th:text="${asignacion.modeloteclado}">Mostrar modelo Teclado</td>
+                                <td th:text="${asignacion.serieraton}">Mostrar serie Raton</td>
+                                <td th:text="${asignacion.marcaraton}">Mostrar marca Raton</td>
+                                <td th:text="${asignacion.modeloraton}">Mostrar modelo Raton</td>
+                                <td th:text="${asignacion.serieimpresora}">Mostrar serie Impresora</td>
+                                <td th:text="${asignacion.marcaimpresora}">Mostrar marca Impresora</td>
+                                <td th:text="${asignacion.modeloimpresora}">Mostrar modelo Impresora</td>
+                                <td th:text="${asignacion.tipoimpresora}">Mostrar tipo Impresora</td>
+                                <td th:text="${asignacion.serieups}">Mostrar serie UPS</td>
+                                <td th:text="${asignacion.marcaups}">Mostrar marca UPS</td>
+                                <td th:text="${asignacion.modeloups}">Mostrar modelo UPS</td>
+                                <td th:text="${asignacion.seriescanner}">Mostrar serie Scanner</td>
+                                <td th:text="${asignacion.marcascanner}">Mostrar marca Scanner</td>
+                                <td th:text="${asignacion.modeloscanner}">Mostrar modelo Scanner</td>
+                                <td th:text="${asignacion.tiposcanner}">Mostrar tipo Scanner</td>
+                                <td th:text="${asignacion.seriepinpad}">Mostrar serie Pinpad</td>
+                                <td th:text="${asignacion.marcapinpad}">Mostrar marca Pinpad</td>
+                                <td th:text="${asignacion.modelopinpad}">Mostrar modelo Pinpad</td>
+                                <td th:text="${asignacion.serietelefono}">Mostrar serie Telefono</td>
+                                <td th:text="${asignacion.marcatelefono}">Mostrar marca Telefono</td>
+                                <td th:text="${asignacion.modelotelefono}"Mostrar modelo Telefono></td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>
             <div th:if="${asignaciones == null or asignaciones.empty}">
                 La lista de Asignaciones está vacía
@@ -140,6 +154,7 @@
         <!-- Custom JS -->
         <script src="js/script.js" type="text/javascript"></script>
         <script src="js/script_asignaciones.js" type="text/javascript"></script>
-
+        <!-- ColReorder JS -->
+        <script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
     </body>
 </html>

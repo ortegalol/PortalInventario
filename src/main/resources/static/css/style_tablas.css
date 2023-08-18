@@ -15,13 +15,20 @@ table {
     white-space: nowrap;
 }
 
+.table thead th {
+    background-color: black;
+    color: white;
+}
+
 .table-container {
     width: 100%;
     overflow-x: hidden;
+    overflow-y: auto;
 }
+
 .icon-cell {
-    width: 40px; /* o el ancho que desees para las celdas de iconos */
-    padding: 5px; /* reduce el padding si es necesario */
+    width: 40px;
+    padding: 5px;
     text-align: center;
 }
 

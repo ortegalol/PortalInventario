@@ -9,6 +9,9 @@
             <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
             <!-- Font Awesome -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+            <!-- ColReorder CSS -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.5.4/css/colReorder.dataTables.min.css"/>
+
             <!-- Custom CSS -->
             <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
             <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
@@ -19,6 +22,9 @@
         <div class="table-container">
             <div th:if="${pcs != null and !pcs.empty}">
                 <br>
+                    <div class="centered">
+                        <h2> Datos Pc </h2>
+                    </div>
                     <table id="datatable_asing" class="table table-striped custom-table">
                         <thead>
                             <tr>
@@ -50,9 +56,12 @@
                                 <td th:text="${pc.estado}">Mostrar Estado</td>
                                 <td th:text="${pc.fechapc}">Mostrar Fecha Alta</td>
                                 <td>
-                                    <a th:if="${pc.status == true}" th:href="@{/configuraciones/{idpc}(idpc=${pc.idpc})}" th:text="${pc.status}"></a>
-                                    <span th:if="${pc.status == false}" th:text="${pc.status}"></span>
+                                    <a th:if="${pc.status == true}" th:href="@{/configuraciones/{idpc}(idpc=${pc.idpc})}">
+                                        <img th:src="@{png/configurar.png}" alt="Configurar" class="table-icon">
+                                    </a>
+                                    <span th:if="${pc.status == false}" th:text="'No asignado'"></span>
                                 </td>
+
                                 <td class="icon-cell">
                                     <a th:href="@{/editarpc/{idpc}(idpc=${pc.idpc})}">
                                         <img src="png/editar.png" alt="Editar" class="table-icon">
@@ -81,8 +90,12 @@
         <!-- DataTable -->
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <!-- ColReorder JS -->
+        <script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
+
         <!-- Custom JS -->
         <script src="js/script.js" type="text/javascript"></script>
         <script src="js/script_pcs.js" type="text/javascript"></script>
+
     </body>
 </html>

@@ -19,32 +19,40 @@
         <div class="table-container">
             <div th:if="${impresoras != null and !impresoras.empty}">
                 <br>
-                <table id="datatable_asing" class="table table-striped custom-table">
-                    <thead>
-                        <tr>
-                            <th>Serie</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Fecha Alta</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableinv">
-                        <tr th:each="impresora : ${impresoras}">
-                            <td th:text="${impresora.serieimpresora}">Mostrar Serie</td>
-                            <td th:text="${impresora.marcaimpresora}">Mostrar Marca</td>
-                            <td th:text="${impresora.modeloimpresora}">Mostrar Modelo</td>
-                            <td th:text="${impresora.tipoimpresora}">Mostrar Tipo</td>
-                            <td th:text="${impresora.status}">Mostrar Status</td>
-                            <td th:text="${impresora.fechaimpresora}">Mostrar Fecha Alta</td>
-                            <td><a th:href="@{/editarimpresora/{idimpresora}(idimpresora=${impresora.idimpresora})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarimpresora(idimpresora=${impresora.idimpresora})}" th:text="Eliminar"></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table id="datatable_asing" class="table table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>Serie</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+                                <th>Fecha Alta</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableinv">
+                            <tr th:each="impresora : ${impresoras}">
+                                <td th:text="${impresora.serieimpresora}">Mostrar Serie</td>
+                                <td th:text="${impresora.marcaimpresora}">Mostrar Marca</td>
+                                <td th:text="${impresora.modeloimpresora}">Mostrar Modelo</td>
+                                <td th:text="${impresora.tipoimpresora}">Mostrar Tipo</td>
+                                <td th:text="${impresora.status}">Mostrar Status</td>
+                                <td th:text="${impresora.fechaimpresora}">Mostrar Fecha Alta</td>
+                                <td class="icon-cell">
+                                    <a th:href="@{/editarimpresora/{idimpresora}(idimpresora=${impresora.idimpresora})}">
+                                        <img src="png/editar.png" alt="Editar" class="table-icon">
+                                    </a>
+                                </td>
+                                <td class="icon-cell">
+                                    <a th:href="@{/eliminarimpresora(idimpresora=${impresora.idimpresora})}">
+                                        <img src="png/eliminar.png" alt="Eliminar" class="table-icon">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>   
         </div>
         <div th:if="${impresoras == null or impresoras.empty}">

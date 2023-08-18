@@ -1,13 +1,14 @@
 let dataTable;
 let dataTableIsInitialized = false;
+
 const dataTableOptions = {
     scrollX: true,
     lengthMenu: [5, 10, 15, 20, 100, 200, 500],
     columnDefs: [
-        {className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]},
-        {orderable: false, targets: [9, 10]},
-        {searchable: false, targets: [9, 10]},
-        {width: "10%", targets: [1, 3, 4, 5, 6, 7]}
+        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8] },
+        { orderable: false, targets: [9, 10] },
+        { searchable: false, targets: [9, 10] },
+        { width: "10%", targets: [1, 3, 4, 5, 6, 7] }
     ],
     pageLength: 10,
     destroy: true,
@@ -25,10 +26,10 @@ const dataTableOptions = {
             next: "Siguiente",
             previous: "Anterior"
         }
-
-    }
-
+    },
+    colReorder: true // Activamos la funcionalidad de reordenar columnas
 };
+
 const initDataTable = async () => {
     if (dataTableIsInitialized) {
         dataTable.destroy();
@@ -37,6 +38,7 @@ const initDataTable = async () => {
     dataTable = $("#datatable_users").DataTable(dataTableOptions);
     dataTableIsInitialized = true;
 };
+
 $(document).ready(function () {
     initDataTable();
 });

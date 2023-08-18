@@ -26,7 +26,8 @@ const dataTableOptions = {
             next: "Siguiente",
             previous: "Anterior"
         }
-    }
+    },
+    colReorder: true // Activamos la funcionalidad de reordenar columnas
 };
 
 const setColorBasedOnStatus = () => {
@@ -54,5 +55,6 @@ const initDataTable = async () => {
 $(document).ready(function () {
     $.extend(true, $.fn.dataTable.defaults, dataTableOptions);
     initDataTable();
-    setColorBasedOnStatus(); // Añade esta línea
+    setColorBasedOnStatus(); 
 });
+

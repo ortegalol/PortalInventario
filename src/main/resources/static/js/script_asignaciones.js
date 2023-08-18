@@ -25,9 +25,8 @@ const dataTableOptions = {
             next: "Siguiente",
             previous: "Anterior"
         }
-
-    }
-
+    },
+    colReorder: true // Activamos la funcionalidad de reordenar columnas
 };
 const initDataTable = async () => {
     if (dataTableIsInitialized) {

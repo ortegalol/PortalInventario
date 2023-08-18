@@ -21,6 +21,7 @@ public class Asignacioncom implements Serializable {
     private String departamento;
     private String puesto;
     private String email;
+    private String ext;
     private String seriepc;
     private String marcapc;
     private String modelopc;
@@ -31,6 +32,13 @@ public class Asignacioncom implements Serializable {
     private String origen_pc;
     private String estado_pc;
     private Boolean status_pc;
+    private String usuario;
+    private String hostname;
+    private String ip;
+    private String macaddress;
+    private String so;
+    private String arch;
+    private String tipo;
     private java.sql.Date fechapc;
     private String serie_monitor;
     private String marca_monitor;

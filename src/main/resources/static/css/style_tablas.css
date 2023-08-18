@@ -19,3 +19,15 @@ table {
     width: 100%;
     overflow-x: hidden;
 }
+.icon-cell {
+    width: 40px; /* o el ancho que desees para las celdas de iconos */
+    padding: 5px; /* reduce el padding si es necesario */
+    text-align: center;
+}
+
+.table-icon {
+    max-width: 50%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}

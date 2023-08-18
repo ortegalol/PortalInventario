@@ -77,11 +77,19 @@ public class ControladorInicio {
     public String inicio() {
         return "inicio/home";
     }
-    
+
     @GetMapping("/prueba")
     public String prueba() {
         return "prueba";
     }
+
+    @GetMapping("/configuraciones/{idpc}")
+    public String configuraciones(@PathVariable("idpc") Long idpc, Model model) {
+        Pc pc = pcService.obtenerPcPorId(idpc);
+        model.addAttribute("pc", pc);
+        return "configuraciones";
+    }
+    
 
 //  --------------------- Tablas ---------------------
     @GetMapping("/empleados")
@@ -356,70 +364,70 @@ public class ControladorInicio {
     public String editarEmpleado(@PathVariable("idempleado") Long idempleado, Model model) {
         Empleado empleado = empleadoService.obtenerEmpleadoPorId(idempleado);
         model.addAttribute("empleado", empleado);
-        return "editempleado";
+        return "edicion/editempleado";
     }
 
     @GetMapping("/editarpc/{idpc}")
     public String editarPc(@PathVariable("idpc") Long idpc, Model model) {
         Pc pc = pcService.obtenerPcPorId(idpc);
         model.addAttribute("pc", pc);
-        return "editpc";
+        return "edicion/editpc";
     }
 
     @GetMapping("/editarmonitor/{idmoni}")
     public String editarMonitor(@PathVariable("idmoni") Long idmoni, Model model) {
         Monitor monitor = monitorService.obtenerMonitorPorId(idmoni);
         model.addAttribute("monitor", monitor);
-        return "editmonitor";
+        return "edicion/editmonitor";
     }
 
     @GetMapping("/editarteclado/{idteclado}")
     public String editarTeclado(@PathVariable("idteclado") Long idteclado, Model model) {
         Teclado teclado = tecladoService.obtenerTecladoPorId(idteclado);
         model.addAttribute("teclado", teclado);
-        return "editteclado";
+        return "edicion/editteclado";
     }
 
     @GetMapping("/editarraton/{idraton}")
     public String editarRaton(@PathVariable("idraton") Long idraton, Model model) {
         Raton raton = ratonService.obtenerRatonPorId(idraton);
         model.addAttribute("raton", raton);
-        return "editraton";
+        return "edicion/editraton";
     }
 
     @GetMapping("/editarimpresora/{idimpresora}")
     public String editarImpresora(@PathVariable("idimpresora") Long idimpresora, Model model) {
         Impresora impresora = impresoraService.obtenerImpresoraPorId(idimpresora);
         model.addAttribute("impresora", impresora);
-        return "editimpresora";
+        return "edicion/editimpresora";
     }
 
     @GetMapping("/editarups/{idups}")
     public String editarUps(@PathVariable("idups") Long idups, Model model) {
         Ups ups = upsService.obtenerUpsPorId(idups);
         model.addAttribute("ups", ups);
-        return "editups";
+        return "edicion/editups";
     }
 
     @GetMapping("/editarscanner/{idscanner}")
     public String editarScanner(@PathVariable("idscanner") Long idscanner, Model model) {
         Scanner scanner = scannerService.obtenerScannerPorId(idscanner);
         model.addAttribute("scanner", scanner);
-        return "editscanner";
+        return "edicion/editscanner";
     }
 
     @GetMapping("/editarpinpad/{idpinpad}")
     public String editarPinpad(@PathVariable("idpinpad") Long idpinpad, Model model) {
         Pinpad pinpad = pinpadService.obtenerPinpadPorId(idpinpad);
         model.addAttribute("pinpad", pinpad);
-        return "editpinpad";
+        return "edicion/editpinpad";
     }
 
     @GetMapping("/editartelefono/{idtelefono}")
     public String editarTelefono(@PathVariable("idtelefono") Long idtelefono, Model model) {
         Telefono telefono = telefonoService.obtenerTelefonoPorId(idtelefono);
         model.addAttribute("telefono", telefono);
-        return "edittelefono";
+        return "edicion/edittelefono";
     }
 
     //  --------------------- Edicion Funcion ---------------------  

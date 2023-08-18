@@ -39,5 +39,18 @@ public class Pc implements Serializable {
     private boolean status;
     
     private java.sql.Date fechapc;
+    
+    private String usuario;
+    
+    private String hostname;
+    
+    private String ip;
+    
+    private String macaddress;
+    
+    private String so;
+    
+    private String arch;
 
+    private String tipo;
 }

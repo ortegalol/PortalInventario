@@ -54,6 +54,13 @@ public class PcServiceImpl implements PcService {
             pcExistente.setOrigen(pc.getOrigen());
             pcExistente.setEstado(pc.getEstado());
 
+            pcExistente.setUsuario(pc.getUsuario());
+            pcExistente.setHostname(pc.getHostname());
+            pcExistente.setIp(pc.getIp());
+            pcExistente.setMacaddress(pc.getMacaddress());
+            pcExistente.setSo(pc.getSo());
+            pcExistente.setArch(pc.getArch());
+            pcExistente.setTipo(pc.getTipo());
             // Guarda los cambios en el pc existente
             pcDao.save(pcExistente);
         }

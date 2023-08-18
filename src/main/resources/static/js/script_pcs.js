@@ -26,19 +26,20 @@ const dataTableOptions = {
             next: "Siguiente",
             previous: "Anterior"
         }
-    },
-    createdRow: function (row, data) {
-        if (data[9] === 'true') {
-            $('td', row).eq(9).css('background-color', 'green');
-            $('td', row).eq(9).text('Asignado');
-        } else {
-            $('td', row).eq(9).css('background-color', 'red');
-            $('td', row).eq(9).text('Sin Asignar');
-        }
     }
+};
 
+const setColorBasedOnStatus = () => {
+    $('#datatable_asing tbody tr').each(function () {
+        const statusCell = $(this).find('td:eq(10)'); // Selecciona la columna "Status" (índice 10)
+        const statusValue = statusCell.find('a, span').text().trim(); // Busca un enlace o un span dentro de la celda
 
-
+        if (statusValue === 'false') {
+            statusCell.css('background-color', 'red');
+        } else if (statusValue === 'true') {
+            statusCell.css('background-color', 'lightgreen');
+        }
+    });
 };
 
 
@@ -53,4 +54,5 @@ const initDataTable = async () => {
 $(document).ready(function () {
     $.extend(true, $.fn.dataTable.defaults, dataTableOptions);
     initDataTable();
+    setColorBasedOnStatus(); // Añade esta línea
 });

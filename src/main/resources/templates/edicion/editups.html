@@ -3,31 +3,40 @@
     <head>
         <title>Editar Ups</title>
         <meta charset="UTF-8"/>
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/style.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
+
         <div class="container mt-5">
             <h1>Editar Ups</h1>
             <form th:action="@{/actualizarups/{idups}(idups=${ups.idups})}" method="post" th:object="${ups}">
 
                 <input type="hidden" name="idups" th:value="${ups.idups}" />
+                <div class="row mb-3">
+                    <!-- Primera columna -->
+                    <div class="col-md-6">
+                        <label for="serieups">Serie:</label>
+                        <input type="text" class="form-control" name="serieups" th:field="*{serieups}"/>
 
-                <label for="serieups">Serie:</label>
-                <input type="text" class="form-control" name="serieups" th:field="*{serieups}"/>
-
-                <label for="marcaups">Marca:</label>
-                <input type="text" class="form-control" name="marcaups" th:field="*{marcaups}" />
-
-                <label for="modeloups">Modelo:</label>
-                <input type="text" class="form-control" name="modeloups" th:field="*{modeloups}" />
-
-                <input type="submit" class="btn btn-dark" value="Guardar" />
+                        <label for="marcaups">Marca:</label>
+                        <input type="text" class="form-control" name="marcaups" th:field="*{marcaups}" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="modeloups">Modelo:</label>
+                        <input type="text" class="form-control" name="modeloups" th:field="*{modeloups}" />
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                            <input type="submit" class="btn btn-dark" value="Guardar" />
+                    </div>
+                </div>
             </form>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>

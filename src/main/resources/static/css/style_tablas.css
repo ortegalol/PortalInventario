@@ -1,5 +1,5 @@
 table {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .centered {
@@ -32,9 +32,36 @@ table {
     text-align: center;
 }
 
-.table-icon {
+.table-icon-conf {
+    max-width: 30%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.table-icon-edit {
     max-width: 50%;
     height: auto;
     display: inline-block;
     vertical-align: middle;
+}
+.table-icon-elim {
+    max-width: 50%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#btnDescargar {
+    background-color: black;
+    color: white;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: none;  /* Añadido para ocultar por defecto el botón */
+}
+
+#btnDescargar:hover {
+    background-color: #333;
 }

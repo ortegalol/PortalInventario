@@ -19,30 +19,42 @@
         <div class="table-container">
             <div th:if="${teclados != null and !teclados.empty}">
                 <br>
-                <table id="datatable_asing" class="table table-striped custom-table">
-                    <thead>
-                        <tr>
-                            <th>Serie</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Status</th>
-                            <th>Fecha Alta</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableinv">
-                        <tr th:each="teclado : ${teclados}">
-                            <td th:text="${teclado.serieteclado}">Mostrar Serie</td>
-                            <td th:text="${teclado.marcateclado}">Mostrar Marca</td>
-                            <td th:text="${teclado.modeloteclado}">Mostrar Modelo</td>
-                            <td th:text="${teclado.status}">Mostrar Status</td>
-                            <td th:text="${teclado.fechateclado}">Mostrar Fecha Alta</td>
-                            <td><a th:href="@{/editarteclado/{idteclado}(idteclado=${teclado.idteclado})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarteclado(idteclado=${teclado.idteclado})}" th:text="Eliminar"></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="centered">
+                        <h2> Datos Teclados </h2>
+                    </div>
+                    <table id="datatable_asing" class="table table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>Serie</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Status</th>
+                                <th>Fecha Alta</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableinv">
+                            <tr th:each="teclado : ${teclados}">
+                                <td th:text="${teclado.serieteclado}">Mostrar Serie</td>
+                                <td th:text="${teclado.marcateclado}">Mostrar Marca</td>
+                                <td th:text="${teclado.modeloteclado}">Mostrar Modelo</td>
+                                <td th:text="${teclado.status}">Mostrar Status</td>
+                                <td th:text="${teclado.fechateclado}">Mostrar Fecha Alta</td>
+                                <td class="icon-cell">
+                                    <a th:href="@{/editarteclado/{idteclado}(idteclado=${teclado.idteclado})}">
+                                        <img src="png/editar.png" alt="Editar" class="table-icon-edit">
+                                    </a>
+                                </td>
+                                <td class="icon-cell">
+                                    <a th:href="@{/eliminarteclado(idteclado=${teclado.idteclado})}" onclick="return confirmDelete();">
+                                        <img src="png/eliminar.png" alt="Eliminar" class="table-icon-elim">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button id="btnDescargar" class="btn btn-primary">Descargar</button>
             </div>   
         </div>
         <div th:if="${teclados == null or teclados.empty}">
@@ -57,6 +69,10 @@
         <!-- DataTable -->
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <!-- Script xlsx -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+        <!-- ColReorder JS -->
+        <script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
         <!-- Custom JS -->
         <script src="js/script.js" type="text/javascript"></script>
         <script src="js/script_teclados.js" type="text/javascript"></script>

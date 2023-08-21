@@ -19,32 +19,44 @@
         <div class="table-container">
             <div th:if="${scanneres != null and !scanneres.empty}">
                 <br>
-                <table id="datatable_asing" class="table table-striped custom-table">
-                    <thead>
-                        <tr>
-                            <th>Serie</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Fecha Alta</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableinv">
-                        <tr th:each="scanner : ${scanneres}">
-                            <td th:text="${scanner.seriescanner}">Mostrar Serie</td>
-                            <td th:text="${scanner.marcascanner}">Mostrar Marca</td>
-                            <td th:text="${scanner.modeloscanner}">Mostrar Modelo</td>
-                            <td th:text="${scanner.tiposcanner}">Mostrar Tipo</td>
-                            <td th:text="${scanner.status}">Mostrar Status</td>
-                            <td th:text="${scanner.fechascanner}">Mostrar Fecha Alta</td>
-                            <td><a th:href="@{/editarscanner/{idscanner}(idscanner=${scanner.idscanner})}" th:text="Editar"></a></td>
-                            <td><a th:href="@{/eliminarscanner(idscanner=${scanner.idscanner})}" th:text="Eliminar"></a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="centered">
+                        <h2> Datos Scanneres </h2>
+                    </div>
+                    <table id="datatable_asing" class="table table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>Serie</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+                                <th>Fecha Alta</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableinv">
+                            <tr th:each="scanner : ${scanneres}">
+                                <td th:text="${scanner.seriescanner}">Mostrar Serie</td>
+                                <td th:text="${scanner.marcascanner}">Mostrar Marca</td>
+                                <td th:text="${scanner.modeloscanner}">Mostrar Modelo</td>
+                                <td th:text="${scanner.tiposcanner}">Mostrar Tipo</td>
+                                <td th:text="${scanner.status}">Mostrar Status</td>
+                                <td th:text="${scanner.fechascanner}">Mostrar Fecha Alta</td>
+                                <td class="icon-cell">
+                                    <a th:href="@{/editarscanner/{idscanner}(idscanner=${scanner.idscanner})}">
+                                        <img src="png/editar.png" alt="Editar" class="table-icon-edit">
+                                    </a>
+                                </td>
+                                <td class="icon-cell">
+                                    <a th:href="@{/eliminarscanner(idscanner=${scanner.idscanner})}" onclick="return confirmDelete();">
+                                        <img src="png/eliminar.png" alt="Eliminar" class="table-icon-elim">
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button id="btnDescargar" class="btn btn-primary">Descargar</button>
             </div>   
         </div>
         <div th:if="${scanneres == null or scanneres.empty}">
@@ -59,6 +71,10 @@
         <!-- DataTable -->
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <!-- Script xlsx -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+        <!-- ColReorder JS -->
+        <script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
         <!-- Custom JS -->
         <script src="js/script.js" type="text/javascript"></script>
         <script src="js/script_scanneres.js" type="text/javascript"></script>

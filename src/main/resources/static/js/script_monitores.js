@@ -27,7 +27,8 @@ const dataTableOptions = {
             previous: "Anterior"
         }
     },
-    createdRow: function (row, data) {
+    colReorder: true // Activamos la funcionalidad de reordenar columnas
+    ,createdRow: function (row, data) {
         if (data[5] === 'true') {
             $('td', row).eq(5).css('background-color', 'green');
             $('td', row).eq(5).text('Asignado');
@@ -47,6 +48,38 @@ const initDataTable = async () => {
 };
 
 $(document).ready(function () {
-    $.extend(true, $.fn.dataTable.defaults, dataTableOptions);
     initDataTable();
+
+    // Escuchador para el evento search.dt
+    $('#datatable_asing').on('search.dt', function () {
+        // Si el valor del buscador es diferente de vacío, muestra el botón
+        if ($('#datatable_asing').DataTable().search() !== "") {
+            $("#btnDescargar").show();
+        } else {
+            // De lo contrario, oculta el botón
+            $("#btnDescargar").hide();
+        }
+    });
 });
+
+function confirmDelete() {
+    return confirm("¿Estás seguro de que deseas eliminar este empleado?");
+}
+
+function descargarXLSX() {
+    let filteredData = dataTable.rows({filter: 'applied'}).data();
+    let dataToExport = [];
+
+    for (let i = 0; i < filteredData.length; i++) {
+        dataToExport.push(filteredData[i]);
+    }
+
+    let ws = XLSX.utils.json_to_sheet(dataToExport);
+    let wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Datos Filtrados");
+
+    XLSX.writeFile(wb, "datos_filtrados.xlsx");
+}
+
+// Vincular el evento click del botón con la función de descarga
+$("#btnDescargar").on("click", descargarXLSX);

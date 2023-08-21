@@ -3,31 +3,40 @@
     <head>
         <title>Editar Raton</title>
         <meta charset="UTF-8"/>
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/style.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
+
         <div class="container mt-5">
             <h1>Editar Raton</h1>
             <form th:action="@{/actualizarraton/{idraton}(idraton=${raton.idraton})}" method="post" th:object="${raton}">
 
                 <input type="hidden" name="idraton" th:value="${raton.idraton}" />
+                <div class="row mb-3">
+                    <!-- Primera columna -->
+                    <div class="col-md-6">
+                        <label for="serieraton">Serie:</label>
+                        <input type="text" class="form-control" name="serieraton" th:field="*{serieraton}"/>
 
-                <label for="serieraton">Serie:</label>
-                <input type="text" class="form-control" name="serieraton" th:field="*{serieraton}"/>
-
-                <label for="marcaraton">Marca:</label>
-                <input type="text" class="form-control" name="marcaraton" th:field="*{marcaraton}" />
-
-                <label for="modeloraton">Modelo:</label>
-                <input type="text" class="form-control" name="modeloraton" th:field="*{modeloraton}" />
-
-                <input type="submit" class="btn btn-dark" value="Guardar" />
+                        <label for="marcaraton">Marca:</label>
+                        <input type="text" class="form-control" name="marcaraton" th:field="*{marcaraton}" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="modeloraton">Modelo:</label>
+                        <input type="text" class="form-control" name="modeloraton" th:field="*{modeloraton}" />
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                        <input type="submit" class="btn btn-dark" value="Guardar" />
+                    </div>
+                </div>
             </form>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>

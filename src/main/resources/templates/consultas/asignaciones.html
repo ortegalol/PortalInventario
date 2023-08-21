@@ -22,7 +22,10 @@
         <div class="table-container">
             <div th:if="${asignaciones != null and !asignaciones.empty}">
                 <br>
-                    <table id="datatable_users" class="table table-striped custom-table">
+                    <div class="centered">
+                        <h2> Datos Asignacion </h2>
+                    </div>
+                    <table id="datatable_asing" class="table table-striped custom-table">
                         <thead>
                             <tr>
                                 <th>Nombre Empleado</th>
@@ -137,6 +140,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <button id="btnDescargar" class="btn btn-primary">Descargar</button>
             </div>
             <div th:if="${asignaciones == null or asignaciones.empty}">
                 La lista de Asignaciones está vacía
@@ -151,10 +155,12 @@
         <!-- DataTable -->
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <!-- Script xlsx -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+        <!-- ColReorder JS -->
+        <script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
         <!-- Custom JS -->
         <script src="js/script.js" type="text/javascript"></script>
         <script src="js/script_asignaciones.js" type="text/javascript"></script>
-        <!-- ColReorder JS -->
-        <script src="https://cdn.datatables.net/colreorder/1.5.4/js/dataTables.colReorder.min.js"></script>
     </body>
 </html>

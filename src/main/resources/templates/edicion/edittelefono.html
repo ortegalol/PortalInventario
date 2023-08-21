@@ -3,31 +3,40 @@
     <head>
         <title>Editar Telefono</title>
         <meta charset="UTF-8"/>
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/style.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
+        <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
+
         <div class="container mt-5">
             <h1>Editar Telefono</h1>
             <form th:action="@{/actualizartelefono/{idtelefono}(idtelefono=${telefono.idtelefono})}" method="post" th:object="${telefono}">
 
                 <input type="hidden" name="idtelefono" th:value="${telefono.idtelefono}" />
+                <div class="row mb-3">
+                    <!-- Primera columna -->
+                    <div class="col-md-6">
+                        <label for="serietelefono">Serie:</label>
+                        <input type="text" class="form-control" name="serietelefono" th:field="*{serietelefono}"/>
 
-                <label for="serietelefono">Serie:</label>
-                <input type="text" class="form-control" name="serietelefono" th:field="*{serietelefono}"/>
-
-                <label for="marcatelefono">Marca:</label>
-                <input type="text" class="form-control" name="marcatelefono" th:field="*{marcatelefono}" />
-
-                <label for="modelotelefono">Modelo:</label>
-                <input type="text" class="form-control" name="modelotelefono" th:field="*{modelotelefono}" />
-
-                <input type="submit" class="btn btn-dark" value="Guardar" />
+                        <label for="marcatelefono">Marca:</label>
+                        <input type="text" class="form-control" name="marcatelefono" th:field="*{marcatelefono}" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="modelotelefono">Modelo:</label>
+                        <input type="text" class="form-control" name="modelotelefono" th:field="*{modelotelefono}" />
+                    </div>
+                    <div class="col-md-6">
+                        <br>
+                            <input type="submit" class="btn btn-dark" value="Guardar" />
+                    </div>
+                </div>
             </form>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>

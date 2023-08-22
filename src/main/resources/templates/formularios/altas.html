@@ -261,7 +261,7 @@
                 </div>
 
 
-                <div class="tab-pane fade" id="raton" th:classappend="${tab == 'raton' ? 'show active' : ''}">
+                    <div class="tab-pane fade" id="raton" th:classappend="${tab == 'raton' ? 'show active' : ''}">
                     <form th:action="@{/guardarRaton}" method="post" th:object="${raton}" class="row g-3">
                         <input type="hidden" name="idraton" th:value="${idraton}" />
 

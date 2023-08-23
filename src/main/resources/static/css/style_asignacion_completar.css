@@ -1,0 +1,59 @@
+#hardwareForm > div {
+    display: none;
+}
+
+#hardwareForm > #empleado {
+    display: block;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-row .col-md-3 {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.form-row .col-md-3 label,
+.form-row .col-md-3 input {
+    width: 100%;
+    margin-bottom: 1px;
+}
+
+/* Add some spacing between sections */
+.form-row + .form-row {
+    margin-top: 1px;
+}
+
+/* Estilo para la sección de los botones */
+.section-controls {
+    position: fixed;
+    bottom: 45px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* Estilo específico para el botón "Prev" */
+.section-controls .prev {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilo específico para el botón "Next" */
+.section-controls .next {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}

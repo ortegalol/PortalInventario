@@ -2,6 +2,8 @@
 package mx.com.gm.web;
 
 //  --------------------- Imports ---------------------
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +31,9 @@ import mx.com.gm.servicio.ScannerService;
 import mx.com.gm.servicio.TecladoService;
 import mx.com.gm.servicio.TelefonoService;
 import mx.com.gm.servicio.UpsService;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -40,6 +45,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @Slf4j
@@ -72,14 +79,51 @@ public class ControladorInicio {
     @Autowired
     private AsignacioncomService asignacioncomService;
 
+    //  --------------------- Asignacion Funcion ---------------------  
+
+    @PostMapping("/import")
+    public String mapReapExcelDatatoDB(@RequestParam("file") MultipartFile reapExcelDataFile) throws IOException {
+
+        List<Empleado> tempEmpleadoList = new ArrayList<Empleado>();
+        XSSFWorkbook workbook = new XSSFWorkbook(reapExcelDataFile.getInputStream());
+        XSSFSheet worksheet = workbook.getSheetAt(0);
+
+        for (int i = 1; i < worksheet.getPhysicalNumberOfRows(); i++) {
+            Empleado tempEmpleado = new Empleado();
+
+            XSSFRow row = worksheet.getRow(i);
+
+            tempEmpleado.setNombre(row.getCell(0).getStringCellValue());
+            tempEmpleado.setNumempleado((int) row.getCell(1).getNumericCellValue());
+            tempEmpleado.setRfc(row.getCell(2).getStringCellValue());
+            tempEmpleado.setCurp(row.getCell(3).getStringCellValue());
+            tempEmpleado.setDepartamento(row.getCell(4).getStringCellValue());
+            tempEmpleado.setPuesto(row.getCell(5).getStringCellValue());
+            tempEmpleado.setEmail(row.getCell(6).getStringCellValue());
+            tempEmpleado.setExt((int) row.getCell(7).getNumericCellValue());
+            
+            tempEmpleadoList.add(tempEmpleado);
+        }
+
+        for (Empleado empleado : tempEmpleadoList) {
+            empleadoService.guardar(empleado);
+        }
+
+        workbook.close();
+
+        return "redirect:inicio/home";
+    }
 //  --------------------- Pagina inicial ---------------------
+
     @GetMapping("/")
     public String inicio() {
         return "inicio/home";
     }
 
     @GetMapping("/prueba")
-    public String prueba() {
+    public String prueba(Model model) {
+        Empleado empleado = new Empleado();
+        model.addAttribute("empleado", empleado);
         return "prueba";
     }
 
@@ -89,7 +133,6 @@ public class ControladorInicio {
         model.addAttribute("pc", pc);
         return "configuraciones";
     }
-    
 
 //  --------------------- Tablas ---------------------
     @GetMapping("/empleados")

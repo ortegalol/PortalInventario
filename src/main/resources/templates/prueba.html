@@ -1,19 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir archivo XLSX</title>
-</head>
-<body>
-    
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Selecciona un archivo XLSX:</label>
-        <input type="file" name="file" id="file" accept=".xlsx">
-        <br><br>
-        <button type="submit">Procesar</button>
-    </form>
-
-</body>
+<html>
+    <head>
+        <title>Subir Archivo</title>
+    </head>
+    <body>
+        <form th:action="@{/import}" method="post" enctype="multipart/form-data" 0.0>
+            <input type="file"  th:name="file" />
+            <input th:type="submit" class="btn btn-dark" value="Import" />
+        </form>
+    </body>
 </html>

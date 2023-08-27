@@ -1,0 +1,28 @@
+/* Cambiar el fondo y el color de las pestañas */
+.nav-tabs .nav-link {
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Resaltar al pasar el ratón por encima */
+.nav-tabs .nav-link:hover {
+    background-color: gray;
+    color: white;
+}
+
+/* Cambiar el color del texto de las pestañas activas */
+.nav-tabs .nav-link.active {
+    background-color: gray; /* Fondo gris claro */
+    color: white; /* Texto blanco */
+}
+/* Agrega estilos personalizados para la pestaña "Archivo" */
+#archivo-tab.nav-link {
+    background-color: #21610B; /* Color verde fuerte */
+    color: white; /* Texto en color blanco para resaltar */
+}
+
+/* Cambia el color de fondo de la pestaña activa */
+#archivo-tab.nav-link.active {
+    background-color: #008000; /* Color verde más oscuro para pestaña activa */
+}

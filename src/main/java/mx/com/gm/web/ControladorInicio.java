@@ -46,6 +46,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -80,7 +83,6 @@ public class ControladorInicio {
     private AsignacioncomService asignacioncomService;
 
     //  --------------------- Asignacion Funcion ---------------------  
-
     @PostMapping("/import")
     public String mapReapExcelDatatoDB(@RequestParam("file") MultipartFile reapExcelDataFile) throws IOException {
 
@@ -101,7 +103,7 @@ public class ControladorInicio {
             tempEmpleado.setPuesto(row.getCell(5).getStringCellValue());
             tempEmpleado.setEmail(row.getCell(6).getStringCellValue());
             tempEmpleado.setExt((int) row.getCell(7).getNumericCellValue());
-            
+
             tempEmpleadoList.add(tempEmpleado);
         }
 
@@ -115,6 +117,17 @@ public class ControladorInicio {
     }
 //  --------------------- Pagina inicial ---------------------
 
+    @Controller
+    public class FileDownloadController {
+
+        @GetMapping("/download/empleados")
+        @ResponseBody
+        public Resource downloadFile() {
+            return new ClassPathResource("resources/empleados_plantilla.xlsx");
+        }
+    }
+
+//  --------------------- Pagina inicial ---------------------
     @GetMapping("/")
     public String inicio() {
         return "inicio/home";

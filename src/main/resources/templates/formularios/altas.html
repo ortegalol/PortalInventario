@@ -10,27 +10,51 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/style_general.css" type="text/css"/>
         <link rel="stylesheet" href="/css/style_submenu.css" type="text/css"/>
-
+        <link rel="stylesheet" href="/css/style_altas.css" type="text/css"/>
         <style>
-            /* Cambiar el fondo y el color de las pestañas */
-            .nav-tabs .nav-link {
-                background-color: black;
-                color: white;
-                transition: background-color 0.3s, color 0.3s;
+            .menu {
+                display: flex;
+                flex-direction: column;
             }
 
-            /* Resaltar al pasar el ratón por encima */
-            .nav-tabs .nav-link:hover {
-                background-color: gray;
-                color: white;
+            .item {
+                background-color: #f0f0f0;
+                border: 1px solid #ccc;
+                margin: 10px;
+                padding: 10px;
+                position: relative;
             }
 
-            /* Cambiar el color del texto de las pestañas activas */
-            .nav-tabs .nav-link.active {
-                background-color: gray; /* Fondo gris claro */
-                color: white; /* Texto blanco */
+            .item-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
             }
 
+            .item-content {
+                display: none;
+                padding-top: 10px;
+            }
+
+            .active .item-content {
+                display: flex; /* Cambiar a flex para mostrar imágenes en fila */
+                flex-wrap: nowrap; /* Evitar que las imágenes se envuelvan a otra línea */
+                justify-content: center; /* Centrar las imágenes horizontalmente */
+                align-items: center; /* Centrar las imágenes verticalmente */
+            }
+
+            /* Estilos para las imágenes */
+            .item-content img {
+                max-width: 100px; /* Cambiar el tamaño máximo de las imágenes */
+                max-height: 100px; /* Cambiar el tamaño máximo de las imágenes */
+                margin: 5px; /* Espacio entre las imágenes */
+            }
+
+            .item-content p {
+                text-align: center;
+                margin-top: 5px;
+            }
         </style>
     </head>
     <body>
@@ -66,6 +90,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="telefono-tab" data-bs-toggle="tab" href="#telefono">Telefono</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="archivo-tab" data-bs-toggle="tab" href="#archivo">Archivo</a>
                 </li>
             </ul>
             <div class="tab-content mt-3">
@@ -261,7 +288,7 @@
                 </div>
 
 
-                    <div class="tab-pane fade" id="raton" th:classappend="${tab == 'raton' ? 'show active' : ''}">
+                <div class="tab-pane fade" id="raton" th:classappend="${tab == 'raton' ? 'show active' : ''}">
                     <form th:action="@{/guardarRaton}" method="post" th:object="${raton}" class="row g-3">
                         <input type="hidden" name="idraton" th:value="${idraton}" />
 
@@ -440,18 +467,18 @@
                         </div>
                     </form>
                 </div>
-
+                <div class="tab-pane fade" id="archivo">
+                </div>
             </div>
         </div>
+
         <footer th:replace="layout/plantilla :: footer"></footer>
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- Bootstrap JS -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.2/js/bootstrap.min.js"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <!-- Custom JS -->
         <script src="js/script.js" type="text/javascript"></script>
-
-
     </body>
 </html>

@@ -1,12 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Subir Archivo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+        <style>
+            .menu {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .item {
+                background-color: #f0f0f0;
+                border: 1px solid #ccc;
+                margin: 10px;
+                padding: 10px;
+                position: relative;
+            }
+
+            .item-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .item-content {
+                display: none;
+                padding-top: 10px;
+            }
+
+            .active .item-content {
+                display: flex; /* Cambiar a flex para mostrar imágenes en fila */
+                flex-wrap: nowrap; /* Evitar que las imágenes se envuelvan a otra línea */
+                justify-content: center; /* Centrar las imágenes horizontalmente */
+                align-items: center; /* Centrar las imágenes verticalmente */
+            }
+
+            /* Estilos para las imágenes */
+            .item-content img {
+                max-width: 100px; /* Cambiar el tamaño máximo de las imágenes */
+                max-height: 100px; /* Cambiar el tamaño máximo de las imágenes */
+                margin: 5px; /* Espacio entre las imágenes */
+            }
+
+            .item-content p {
+                text-align: center;
+                margin-top: 5px;
+            }
+        </style>
+
+
+        <title>Menú Desplegable</title>
     </head>
     <body>
-        <form th:action="@{/import}" method="post" enctype="multipart/form-data" 0.0>
-            <input type="file"  th:name="file" />
-            <input th:type="submit" class="btn btn-dark" value="Import" />
-        </form>
+        <div class="menu">
+            <div class="item">
+                <div class="item-header">Empleado <span class="toggle">+</span></div>
+                <div class="item-content">
+                    <a href="/download/empleados" download="empleados_plantilla.xlsx">
+                        <img src="png/Download.png" alt="Download">
+                    </a>
+
+                    <form th:action="@{/import}" method="post" enctype="multipart/form-data">
+                        <input type="file" th:name="file" id="fileInput" accept=".xlsx" style="display: none;" />
+                        <img src="png/Upload.png" alt="Upload" onclick="document.getElementById('fileInput').click();" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggles = document.querySelectorAll('.toggle');
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const item = this.closest('.item');
+                    item.classList.toggle('active');
+                });
+            });
+        });
+
+    </script>
 </html>
